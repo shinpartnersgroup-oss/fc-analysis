@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本全国 フランチャイズ展開 網羅的調査レポート</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1a1a2e;--accent:#e94560;--accent2:#0f3460;--bg:#f8f9fa;--card:#fff;--text:#333;--text-light:#666;--border:#e0e0e0;--success:#27ae60;--warning:#f39c12;--danger:#e74c3c;--info:#3498db}
+body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent2) 100%);color:#fff;padding:60px 20px;text-align:center}
+.hero h1{font-size:2.2rem;margin-bottom:12px;letter-spacing:1px}
+.hero p{font-size:1rem;opacity:.85;max-width:700px;margin:0 auto}
+.hero .meta{margin-top:16px;font-size:.85rem;opacity:.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+nav.toc{background:var(--card);border-radius:12px;padding:28px 32px;margin:24px auto;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+nav.toc h2{font-size:1.3rem;margin-bottom:16px;color:var(--primary)}
+nav.toc ol{columns:2;column-gap:32px;padding-left:20px}
+nav.toc li{margin-bottom:8px;font-size:.92rem;break-inside:avoid}
+nav.toc a{color:var(--accent2);text-decoration:none;transition:color .2s}
+nav.toc a:hover{color:var(--accent)}
+section{background:var(--card);border-radius:12px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+section h2{font-size:1.5rem;color:var(--primary);border-left:4px solid var(--accent);padding-left:14px;margin-bottom:24px}
+section h3{font-size:1.15rem;color:var(--accent2);margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--border)}
+section h4{font-size:1rem;color:var(--text);margin:18px 0 8px;font-weight:700}
+.table-wrap{overflow-x:auto;margin:12px 0 20px;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+thead{background:var(--primary);color:#fff}
+th{padding:10px 14px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tbody tr:hover{background:#f0f4ff}
+tbody tr:nth-child(even){background:#fafafa}
+tbody tr:nth-child(even):hover{background:#f0f4ff}
+.badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.75rem;font-weight:700;vertical-align:middle}
+.badge-danger{background:#fde8e8;color:var(--danger)}
+.badge-success{background:#e8f5e9;color:var(--success)}
+.badge-warning{background:#fff8e1;color:#e65100}
+.badge-info{background:#e3f2fd;color:var(--info)}
+.badge-gray{background:#eee;color:#666}
+.alert{padding:16px 20px;border-radius:8px;margin:16px 0;font-size:.9rem;line-height:1.6}
+.alert-danger{background:#fde8e8;border-left:4px solid var(--danger);color:#b71c1c}
+.alert-info{background:#e3f2fd;border-left:4px solid var(--info);color:#0d47a1}
+.alert-success{background:#e8f5e9;border-left:4px solid var(--success);color:#1b5e20}
+.alert strong{display:block;margin-bottom:4px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0}
+.stat-card{background:linear-gradient(135deg,var(--accent2),var(--primary));color:#fff;border-radius:10px;padding:20px;text-align:center}
+.stat-card .num{font-size:2rem;font-weight:800}
+.stat-card .label{font-size:.82rem;opacity:.8;margin-top:4px}
+.highlight{background:#fffde7;padding:2px 6px;border-radius:3px;font-weight:700}
+.text-danger{color:var(--danger)}
+.text-success{color:var(--success)}
+.text-warning{color:var(--warning)}
+.text-info{color:var(--info)}
+strong.price{color:var(--accent)}
+.fc-status{font-weight:700}
+.fc-status.open{color:var(--success)}
+.fc-status.closed{color:var(--danger)}
+.fc-status.limited{color:var(--warning)}
+.section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin:40px 0}
+footer{text-align:center;padding:40px 20px;color:var(--text-light);font-size:.82rem}
+@media(max-width:768px){
+  .hero h1{font-size:1.5rem}
+  nav.toc ol{columns:1}
+  section{padding:20px 16px}
+  th,td{padding:8px 10px;font-size:.8rem}
+  .stat-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>日本全国 フランチャイズ展開<br>網羅的調査レポート</h1>
+  <p>全11業種・80+ブランドのFC加盟金・ロイヤリティ・初期投資額を完全網羅</p>
+  <div class="meta">調査日: 2026年2月23日 ｜ curaim FC展開プロジェクト</div>
+</div>
+
+<div class="container">
+
+<!-- 統計サマリー -->
+<div class="stat-grid">
+  <div class="stat-card"><div class="num">80+</div><div class="label">調査ブランド数</div></div>
+  <div class="stat-card"><div class="num">11</div><div class="label">調査業種カテゴリ</div></div>
+  <div class="stat-card"><div class="num">11万円〜</div><div class="label">最低初期投資額（公文式）</div></div>
+  <div class="stat-card"><div class="num">1億円</div><div class="label">最高初期投資額（エニタイム）</div></div>
+</div>
+
+<!-- 目次 -->
+<nav class="toc" id="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#sec1">飲食・フード系FC（28社）</a></li>
+    <li><a href="#sec2">フィットネス・ストレッチ・ジム系FC（20社）</a></li>
+    <li><a href="#sec3">美容・エステ・脱毛系FC（14社）</a></li>
+    <li><a href="#sec4">コンビニ系FC（3社）</a></li>
+    <li><a href="#sec5">学習塾・教育系FC（3社）</a></li>
+    <li><a href="#sec6">買取・リサイクル系FC（4社）</a></li>
+    <li><a href="#sec7">ハウスサービス・クリーニング系FC</a></li>
+    <li><a href="#sec8">不動産系FC</a></li>
+    <li><a href="#sec9">自動車関連FC</a></li>
+    <li><a href="#sec10">修理・リペア / その他サービス系FC</a></li>
+    <li><a href="#sec11">業界横断 初期投資額 比較ランキング</a></li>
+    <li><a href="#sec12">FC展開の教訓・失敗事例</a></li>
+    <li><a href="#sec13">curaimへの示唆</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================================ -->
+<!-- セクション1: 飲食・フード系FC -->
+<!-- ============================================================ -->
+<section id="sec1">
+<h2>1. 飲食・フード系FC（28社）</h2>
+
+<h3>1-1. ハンバーガー・ファストフード</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>契約期間</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>マクドナルド</strong></td><td>日本マクドナルド</td><td>約2,975店</td><td>約250万円</td><td>売上の3%＋広告4.5%</td><td>5,000万〜1億円</td><td>20年</td><td><span class="fc-status limited">法人のみ</span></td></tr>
+<tr><td><strong>モスバーガー</strong></td><td>モスフードサービス</td><td>約1,283店</td><td>200万円</td><td>売上の<strong class="price">1%</strong></td><td>3,200万〜4,600万円</td><td>10年</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>KFC</strong></td><td>日本KFCホールディングス</td><td>約1,218店</td><td>非公開</td><td>非公開</td><td>数千万〜1億円</td><td>—</td><td><span class="fc-status limited">法人のみ</span></td></tr>
+<tr><td><strong>サブウェイ</strong></td><td>日本サブウェイ</td><td>約170店 <span class="badge badge-danger">激減</span></td><td>非公開</td><td>売上の8%</td><td>1,500万〜2,500万円</td><td>—</td><td><span class="fc-status limited">要相談</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>1-2. 牛丼・定食</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>契約期間</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>すき家</strong></td><td>ゼンショーHD</td><td>約1,932店</td><td colspan="5" style="text-align:center"><span class="badge badge-gray">全店直営 — FC募集なし</span></td></tr>
+<tr><td><strong>吉野家</strong></td><td>吉野家HD</td><td>約1,193店</td><td>非公開</td><td>約3%（推定）</td><td>2,000万〜5,000万円</td><td>—</td><td><span class="fc-status limited">法人中心</span></td></tr>
+<tr><td><strong>松屋</strong></td><td>松屋フーズ</td><td>約1,240店</td><td colspan="5" style="text-align:center"><span class="badge badge-danger">FC募集 停止中</span></td></tr>
+<tr><td><strong>やよい軒</strong></td><td>プレナス</td><td>約360店</td><td>500万円</td><td>売上の2〜6%</td><td>4,000万〜7,000万円</td><td>10年</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>大戸屋</strong></td><td>コロワイドG</td><td>約340店</td><td>300万円</td><td>売上の3%</td><td>3,500万〜6,000万円</td><td>—</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>1-3. カレー・ラーメン・麺類</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>CoCo壱番屋</strong></td><td>壱番屋</td><td>約1,260店</td><td><strong class="price">0円</strong></td><td><strong class="price">0円</strong></td><td>約2,700万円</td><td><span class="fc-status limited">社員独立のみ（4〜5年勤務必須）</span></td></tr>
+<tr><td><strong>天下一品</strong></td><td>天下一品</td><td>約222店</td><td>220万円</td><td>月額<strong class="price">2.2万円</strong></td><td>3,000万〜5,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>丸亀製麺</strong></td><td>トリドールHD</td><td>約840店</td><td colspan="4" style="text-align:center"><span class="badge badge-gray">全店直営 — FC募集なし</span></td></tr>
+<tr><td><strong>幸楽苑</strong></td><td>幸楽苑HD</td><td>約380店</td><td>300万円</td><td>売上の3%</td><td>5,000万〜8,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="alert alert-info">
+<strong>💡 CoCo壱番屋のブルームシステム</strong>
+加盟金0円・ロイヤリティ0円という破格の条件だが、CoCo壱番屋の社員として4〜5年間勤務した後に独立する「ブルームシステム」が前提。一般公募なし。仕入れは本部からのため、実質的に利益を確保する仕組み。FC比率約85%。
+</div>
+
+<h3>1-4. 中華・居酒屋</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>餃子の王将</strong></td><td>王将フードサービス</td><td>約730店</td><td>非公開</td><td>のれん代 月3万円（社内独立）</td><td>非公開</td><td><span class="fc-status limited">社内独立制度中心</span></td></tr>
+<tr><td><strong>鳥貴族</strong></td><td>鳥貴族HD</td><td>約650店</td><td>非公開</td><td>月額<strong class="price">5万円</strong></td><td>2,000万〜4,000万円</td><td><span class="fc-status closed">社員・元社員限定</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>1-5. カフェ・コーヒー</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>契約期間</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>コメダ珈琲店</strong></td><td>コメダHD</td><td>約1,000店</td><td>300万円</td><td>席数×<strong class="price">1,500円/月</strong>（定額）</td><td>6,000万〜8,000万円</td><td>7年</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ドトールコーヒー</strong></td><td>ドトールコーヒー</td><td>約1,067店</td><td>150万円</td><td>売上の<strong class="price">2%</strong></td><td>3,500万〜6,000万円</td><td>5年</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>タリーズコーヒー</strong></td><td>伊藤園グループ</td><td>約780店</td><td>250万円</td><td>売上の3%</td><td>3,000万〜5,000万円</td><td>10年</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>1-6. 宅配・テイクアウト・スイーツ</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>ドミノ・ピザ</strong></td><td>ドミノ・ピザ ジャパン</td><td>約1,000店</td><td>330万円</td><td>売上の5.5%＋広告4%</td><td>4,300万〜5,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ほっともっと</strong></td><td>プレナス</td><td>約2,450店</td><td>50万円</td><td>売上の5%</td><td>約290万円〜</td><td><span class="badge badge-danger">募集休止中</span></td></tr>
+<tr><td><strong>築地銀だこ</strong></td><td>ホットランド</td><td>約500店</td><td>200万円</td><td>売上の5%</td><td>1,500万〜3,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>サーティワン</strong></td><td>B-Rサーティワン</td><td>約1,180店</td><td>200万円</td><td>売上の5%＋広告3%</td><td>3,000万〜5,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ミスタードーナツ</strong></td><td>ダスキン</td><td>約960店</td><td>非公開</td><td>約3〜5%（推定）</td><td>3,000万〜5,000万円（推定）</td><td><span class="fc-status limited">新規募集限定的</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>1-7. 唐揚げ専門店</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>鶏笑</strong></td><td>NIS</td><td>約280店</td><td>130万円</td><td><strong class="price">0円</strong></td><td>600万〜900万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>からやま</strong></td><td>アークランドサービスHD</td><td>約140店</td><td>300万円</td><td>売上の4%</td><td>3,500万〜5,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>1-8. 高級食パン・台湾茶</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr style="background:#fff0f0"><td><strong>乃が美（のがみ）</strong> <span class="badge badge-danger">⚠️要注意</span></td><td>乃が美HD</td><td>最盛期230店→<span class="text-danger">100店以下に激減</span></td><td>500万円</td><td>売上の10%</td><td>2,500万〜4,000万円</td><td><span class="fc-status closed">募集停止</span></td></tr>
+<tr><td><strong>ゴンチャ（Gong cha）</strong></td><td>ゴンチャ ジャパン</td><td>約170店</td><td>200万円</td><td>売上の3%＋広告3.5%</td><td>3,500万〜5,000万円</td><td><span class="fc-status limited">法人のみ</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="alert alert-danger">
+<strong>⚠️ 乃が美の教訓 — FC展開最大の失敗事例</strong>
+高級食パンブームに乗り最大230店舗まで拡大したが、ブーム終焉後に9割の店舗が赤字化。ロイヤリティ10%が経営を圧迫し、負債が2億円に膨らんだFCオーナーの事例も。本部とFCオーナー間で複数の訴訟に発展。<strong>一過性ブームに依存するFCの危険性</strong>を象徴する事例。
+</div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション2: フィットネス・ストレッチ・ジム系FC -->
+<!-- ============================================================ -->
+<section id="sec2">
+<h2>2. フィットネス・ストレッチ・ジム系FC（20社）</h2>
+
+<h3>2-1. ストレッチ専門店</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>ドクターストレッチ（Dr.stretch）</strong></td><td>nobitel</td><td>約260店以上（6カ国）</td><td>約200万円（推定）</td><td>売上の約5%（推定）</td><td>900万〜1,300万円</td><td><span class="fc-status limited">直営中心・外部FC極めて限定的</span></td></tr>
+<tr><td><strong>Re.Ra.Ku（リラク）</strong></td><td>メディロム</td><td>約150店以上</td><td>300万円</td><td>売上の8%（2店舗目以降7%）</td><td>約2,108万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ストレチックス</strong></td><td>—</td><td>小規模</td><td>1ベッドあたり50万円〜</td><td>要問合せ</td><td>約250万円〜</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ストレッチアップ</strong></td><td>ストレッチアップ</td><td>首都圏中心</td><td>非公開</td><td>非公開</td><td>約800万円</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>2-2. 24時間ジム</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>投資回収</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>エニタイムフィットネス</strong></td><td>Fast Fitness Japan</td><td>約1,200店以上</td><td>約500万円</td><td>月額35万円（定額）</td><td>8,000万〜1億円</td><td>3〜5年</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>chocoZAP</strong></td><td>RIZAPグループ</td><td>約1,800店</td><td>200万円</td><td>売上の15%</td><td>新規2,200万円〜 / 既存2,700万円〜</td><td>新規4年2ヶ月 / 既存3年9ヶ月</td><td><span class="fc-status open">2025年12月〜開始</span></td></tr>
+<tr><td><strong>ワールドプラスジム</strong></td><td>ワールドプラス</td><td>160店以上</td><td>非公開</td><td>月額33万円〜</td><td>約6,000万円</td><td>—</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>FIT PLACE24</strong></td><td>FIT PLACE</td><td>120店以上</td><td>非公開</td><td>非公開</td><td>約8,000万円</td><td>30〜40ヶ月</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>フィットイージー</strong></td><td>フィットイージー（東証）</td><td>224店以上</td><td>非公開</td><td>会員数連動型</td><td>非公開</td><td>—</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>HYPER FIT24</strong></td><td>サンミュージック</td><td>—</td><td>200万円</td><td>月額8万円</td><td>5,000万円以上</td><td>—</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ECOFIT24</strong></td><td>エーイーシー</td><td>40店以上</td><td>200万円</td><td>売上の10%（上限30万）</td><td>低コスト（自社製マシン）</td><td>—</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>2-3. 女性専用・パーソナル</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>カーブス</strong></td><td>カーブスジャパン（東証プライム）</td><td>2,001店（会員91.5万人）</td><td>300万円</td><td>月会費売上の6%＋広告月3万</td><td>約1,700万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>ファディー（FURDI）</strong></td><td>ATカンパニー</td><td>約70店</td><td>360万円</td><td>非公開</td><td>800万〜900万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>かたぎり塾</strong></td><td>caname</td><td>340店以上</td><td>165万円</td><td>20〜25%（包括型）</td><td>約500万円</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>2-4. ヨガ・リラクゼーション</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>ホットヨガLAVA</strong></td><td>LAVA International</td><td>540店以上</td><td>非公開</td><td>非公開</td><td>非公開</td><td><span class="fc-status limited">直営中心・限定FC</span></td></tr>
+<tr><td><strong>りらくる</strong></td><td>りらく</td><td>約602店</td><td colspan="4" style="text-align:center"><span class="badge badge-gray">直営＋業務委託モデル — FC募集なし</span></td></tr>
+<tr><td><strong>ラフィネ</strong></td><td>ボディワーク</td><td>500店以上</td><td colspan="4" style="text-align:center"><span class="badge badge-gray">全店直営 — FC募集なし</span></td></tr>
+<tr><td><strong>Goo-it!（グイット）</strong></td><td>LHS</td><td>60店以上</td><td>250万円</td><td>月額22万円</td><td>約950万円</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション3: 美容・エステ・脱毛系FC -->
+<!-- ============================================================ -->
+<section id="sec3">
+<h2>3. 美容・エステ・脱毛系FC（14社）</h2>
+
+<h3>3-1. エステサロン</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>Beauty Face</strong></td><td>約235店（業界1位）</td><td>200万円</td><td>売上の7%</td><td>800万〜1,000万円</td><td>エステ店舗数日本一</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>小顔専門店BUPURA</strong></td><td>170店以上</td><td>ライセンス料242万円含む</td><td>月額11万円</td><td>586万〜781万円</td><td>小顔矯正特化で急成長</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>わたしのハイフ。</strong></td><td>約150店</td><td>名目0円（実質220万）</td><td>月額20.75万円</td><td>419万〜554万円</td><td>セルフ式。月額3,278円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>韓国肌管理Belle</strong></td><td>展開中</td><td>330万円</td><td>売上の15%</td><td>500万円〜</td><td>韓国式肌管理</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>LIME</strong></td><td>200店以上</td><td>300万円</td><td>10〜15%</td><td>約450万円</td><td>代理店型展開も可能</td><td><span class="fc-status open">募集中</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>3-2. まつげエクステ</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>Blanc（ブラン）</strong></td><td>112店以上</td><td>150万円</td><td>1年目5〜7%、2年目以降10〜15%（赤字時0%）</td><td>約940万円〜</td><td>赤字時ロイヤリティ免除は業界希少</td></tr>
+<tr><td><strong>MAQUIA（マキア）</strong></td><td>180店以上</td><td>キャンペーン時10万円</td><td>先着限定0円</td><td>非公開</td><td>投資型FCモデル</td></tr>
+</tbody>
+</table></div>
+
+<h3>3-3. 美容室・ヘアサロン</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>特徴</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>Agu.hair</strong></td><td>AB&Company</td><td>約900店</td><td>—</td><td>業務委託サロン。内部FC制度のみ</td><td><span class="fc-status closed">一般公募なし</span></td></tr>
+<tr><td><strong>ディアーズ（Dears）</strong></td><td>—</td><td>約70店</td><td>0〜500万円</td><td>髪質改善特化・高単価</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>美容室プラージュ</strong></td><td>プラージュ</td><td>650〜730店</td><td colspan="3" style="text-align:center"><span class="badge badge-gray">全店直営 — FC募集なし</span></td></tr>
+<tr><td><strong>HAIR SALON IWASAKI</strong></td><td>ハクブン</td><td>約950店</td><td colspan="3" style="text-align:center"><span class="badge badge-gray">全店直営 — FC募集なし</span></td></tr>
+<tr><td><strong>QBハウス</strong></td><td>キュービーネットHD</td><td>約600店</td><td colspan="3" style="text-align:center"><span class="badge badge-gray">全店直営（過去FC反故事件あり）</span></td></tr>
+</tbody>
+</table></div>
+
+<h3>3-4. メンズ脱毛</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>メンズ脱毛MAX</strong></td><td>85店以上</td><td><strong class="price">0円</strong></td><td>月額15万円</td><td><strong class="price">20万〜50万円</strong></td><td>ワンルームマンション型。業界最安</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション4: コンビニ系FC -->
+<!-- ============================================================ -->
+<section id="sec4">
+<h2>4. コンビニ系FC（3社）</h2>
+
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>契約期間</th></tr></thead>
+<tbody>
+<tr><td><strong>セブンイレブン</strong></td><td>セブン-イレブン・ジャパン</td><td>約21,681店</td><td>260万〜310万円</td><td>売上総利益の<strong>43〜76%</strong></td><td>約260万〜310万円</td><td>15年</td></tr>
+<tr><td><strong>ファミリーマート</strong></td><td>ファミリーマート（伊藤忠G）</td><td>約16,404店</td><td>50万円</td><td>売上総利益の<strong>49〜69%</strong></td><td>約310万円〜</td><td>10年</td></tr>
+<tr><td><strong>ローソン</strong></td><td>ローソン（KDDI G）</td><td>約14,600店</td><td>100万円</td><td>売上総利益の<strong>約45〜70%</strong></td><td>約300万〜510万円</td><td>10年</td></tr>
+</tbody>
+</table></div>
+
+<div class="alert alert-info">
+<strong>💡 コンビニFCの特徴</strong>
+初期投資は最も安い部類（260万円〜）だが、ロイヤリティが売上総利益の43〜76%と極めて高い。24時間365日営業が基本で、オーナーの労働負荷が社会問題になっている。
+</div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション5: 学習塾・教育系FC -->
+<!-- ============================================================ -->
+<section id="sec5">
+<h2>5. 学習塾・教育系FC（3社）</h2>
+
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>教室数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>公文式（KUMON）</strong></td><td>公文教育研究会</td><td>約15,000教室</td><td>実質約11万円〜</td><td>月謝の約50%</td><td><strong class="price">約30万〜100万円</strong></td><td>自宅開業可。主婦層に人気</td></tr>
+<tr><td><strong>明光義塾</strong></td><td>明光ネットワークジャパン</td><td>約1,700教室</td><td>200万円</td><td>売上の10%</td><td>1,000万〜1,500万円</td><td>個別指導のパイオニア。FC比率65%</td></tr>
+<tr><td><strong>ECCジュニア</strong></td><td>ECC</td><td>約14,000教室</td><td>実質約20万円〜</td><td>なし（教材仕入で回収）</td><td><strong class="price">約20万〜50万円</strong></td><td>自宅開業可。ロイヤリティ名目なし</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション6: 買取・リサイクル系FC -->
+<!-- ============================================================ -->
+<section id="sec6">
+<h2>6. 買取・リサイクル系FC（4社）</h2>
+
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>FC状況</th></tr></thead>
+<tbody>
+<tr><td><strong>買取大吉</strong></td><td>エンパワー</td><td>約850店</td><td>200万円</td><td>非公開</td><td>1,600万〜2,200万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>おたからや</strong></td><td>いーふらん</td><td>約500店以上</td><td>275万円</td><td>月額22万円</td><td>500万〜700万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>大黒屋</strong></td><td>大黒屋</td><td>約240店</td><td>150万円</td><td>月額10万円</td><td>600万〜1,000万円</td><td><span class="fc-status open">募集中</span></td></tr>
+<tr><td><strong>なんぼや</strong></td><td>バリュエンスHD</td><td>約130店</td><td>—</td><td>—</td><td>—</td><td><span class="fc-status closed">FC募集停止中</span></td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション7: ハウスサービス・クリーニング系FC -->
+<!-- ============================================================ -->
+<section id="sec7">
+<h2>7. ハウスサービス・クリーニング系FC</h2>
+
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>おそうじ本舗</strong></td><td>HITOWAライフパートナー</td><td>約1,900店</td><td>200万円</td><td>月額6万円</td><td>450万〜600万円</td><td>ハウスクリーニング業界No.1。無店舗型</td></tr>
+<tr><td><strong>ダスキン</strong></td><td>ダスキン</td><td>約5,000拠点</td><td>100万〜300万円</td><td>売上の3〜10%</td><td>500万〜1,500万円</td><td>掃除用具レンタル〜害虫駆除まで多角展開</td></tr>
+<tr><td><strong>ホワイト急便</strong></td><td>日本さわやかグループ</td><td>約5,000店</td><td>20万円（営業店型）</td><td>—</td><td><strong class="price">約70万円〜</strong></td><td>取次店型なら極めて低コスト</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション8: 不動産系FC -->
+<!-- ============================================================ -->
+<section id="sec8">
+<h2>8. 不動産系FC</h2>
+
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>アパマンショップ</strong></td><td>APAMAN</td><td>約1,100店</td><td>100万〜300万円</td><td>月額7万円</td><td>約1,000万円</td><td>賃貸仲介最大手。定額ロイヤリティ</td></tr>
+<tr><td><strong>センチュリー21</strong></td><td>センチュリー21・ジャパン</td><td>約1,000店</td><td>150万〜300万円</td><td>売上の約6%</td><td>1,400万〜2,000万円</td><td>世界的不動産ブランド</td></tr>
+<tr><td><strong>ハウスドゥ</strong></td><td>And DoHD（東証プライム）</td><td>約700店</td><td>165万円</td><td>月額11万円</td><td>800万〜1,100万円</td><td>定額ロイヤリティ。宅建士必要</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション9: 自動車関連FC -->
+<!-- ============================================================ -->
+<section id="sec9">
+<h2>9. 自動車関連FC</h2>
+
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>注意事項</th></tr></thead>
+<tbody>
+<tr><td><strong>オートバックス</strong></td><td>オートバックスセブン</td><td>約500店以上</td><td>100万円</td><td>売上の<span class="text-danger"><strong>9%</strong></span></td><td>数千万〜1億円超</td><td><span class="badge badge-danger">⚠️2024年に1%→9%へ改定</span></td></tr>
+<tr><td><strong>イエローハット</strong></td><td>イエローハット</td><td>約760店</td><td>300万円</td><td>固定制（非公開）</td><td>3,500万〜7,000万円</td><td>—</td></tr>
+<tr><td><strong>カーコンビニ倶楽部</strong></td><td>カーコンビニ倶楽部</td><td>約500店</td><td>97.9万円〜</td><td>月額5.5万円</td><td><strong class="price">97.9万円〜</strong></td><td>既存整備工場の看板掛替モデル</td></tr>
+<tr><td><strong>ガリバー</strong></td><td>IDOM</td><td>約460店</td><td>800万円</td><td>月額90万円</td><td>1,500万〜1,700万円</td><td>ロイヤリティ高額だが集客力強い</td></tr>
+</tbody>
+</table></div>
+
+<div class="alert alert-danger">
+<strong>⚠️ オートバックスのロイヤリティ大改定（2024年）</strong>
+1975年の創業以来初めて、ロイヤリティを1%から9%へ大幅引き上げ。FC加盟店にとって収益を大きく圧迫する変更。<strong>本部のロイヤリティ改定リスク</strong>は常に存在することを示す事例。
+</div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション10: 修理・リペア / その他サービス系FC -->
+<!-- ============================================================ -->
+<section id="sec10">
+<h2>10. 修理・リペア / その他サービス系FC</h2>
+
+<h3>修理・リペア</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>トータルリペア</strong></td><td>アムテック</td><td>約350拠点</td><td>130万円</td><td>月額7万円</td><td>350万〜450万円</td><td>無店舗型。出張施工。1人で開業可能</td></tr>
+<tr><td><strong>アイサポ（iPhone修理）</strong></td><td>アイサポ</td><td>約290店</td><td>非公開</td><td>月額6万円〜</td><td>約100万円前後</td><td>スマホ修理FC最大手。省スペース</td></tr>
+</tbody>
+</table></div>
+
+<h3>その他サービス</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>運営会社</th><th>店舗数</th><th>加盟金</th><th>ロイヤリティ</th><th>初期投資総額</th><th>特徴</th></tr></thead>
+<tbody>
+<tr><td><strong>ワークマン</strong> <span class="badge badge-success">ホワイトFC</span></td><td>ワークマン（ベイシアG）</td><td>約1,000店</td><td>75万円</td><td>粗利の40%</td><td><strong class="price">約175万円</strong></td><td>店舗は本部提供。完全週休2日。FC比率94%</td></tr>
+<tr><td><strong>IBJ（結婚相談所）</strong></td><td>IBJ（東証プライム）</td><td>約4,300社</td><td>160万〜320万円</td><td>月額1.9万円のみ</td><td>160万〜400万円</td><td>自宅開業可。在庫不要。副業可</td></tr>
+<tr><td><strong>コインランドリー</strong></td><td>各社</td><td>—</td><td>100万〜300万円</td><td>0円のケースが多い</td><td>2,000万〜4,000万円</td><td>無人運営。人件費ゼロ</td></tr>
+<tr><td><strong>セカンドストリート</strong></td><td>ゲオHD</td><td>約800店</td><td>—</td><td>—</td><td>—</td><td><span class="fc-status closed">直営主体。一般FC募集なし</span></td></tr>
+</tbody>
+</table></div>
+
+<div class="alert alert-success">
+<strong>✅ ワークマン「ホワイトFC」モデル</strong>
+初期投資わずか175万円（店舗は本部が用意）。完全週休2日・残業なし。FC比率94%で加盟者の満足度が極めて高い。「加盟者に優しいFC」として業界の理想形とされている。
+</div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション11: 業界横断 初期投資額 比較ランキング -->
+<!-- ============================================================ -->
+<section id="sec11">
+<h2>11. 業界横断 初期投資額 比較ランキング</h2>
+
+<h3>💰 100万円未満で始められるFC</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ブランド</th><th>業種</th><th>初期投資</th><th>ロイヤリティ</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>公文式</strong></td><td>教育</td><td><strong class="price">約11万〜100万円</strong></td><td>月謝の約50%</td></tr>
+<tr><td>2</td><td><strong>ECCジュニア</strong></td><td>教育</td><td><strong class="price">約20万〜50万円</strong></td><td>なし</td></tr>
+<tr><td>3</td><td><strong>メンズ脱毛MAX</strong></td><td>脱毛</td><td><strong class="price">20万〜50万円</strong></td><td>月額15万円</td></tr>
+<tr><td>4</td><td><strong>ホワイト急便</strong></td><td>クリーニング</td><td><strong class="price">約70万円〜</strong></td><td>要問合せ</td></tr>
+<tr><td>5</td><td><strong>カーコンビニ倶楽部</strong></td><td>自動車修理</td><td><strong class="price">97.9万円〜</strong></td><td>月額5.5万円</td></tr>
+</tbody>
+</table></div>
+
+<h3>💰 100万〜500万円</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>ブランド</th><th>業種</th><th>初期投資</th><th>ロイヤリティ</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>アイサポ</strong></td><td>スマホ修理</td><td>約100万円</td><td>月額6万円〜</td></tr>
+<tr><td>2</td><td><strong>IBJ結婚相談所</strong></td><td>結婚相談</td><td>160万〜400万円</td><td>月額1.9万円</td></tr>
+<tr><td>3</td><td><strong>ワークマン</strong></td><td>小売</td><td>約175万円</td><td>粗利の40%</td></tr>
+<tr><td>4</td><td><strong>ストレチックス</strong></td><td>ストレッチ</td><td>250万円〜</td><td>要問合せ</td></tr>
+<tr><td>5</td><td><strong>セブンイレブン</strong></td><td>コンビニ</td><td>約260万円</td><td>売上総利益の43〜76%</td></tr>
+<tr><td>6</td><td><strong>ファミリーマート</strong></td><td>コンビニ</td><td>約310万円</td><td>売上総利益の49〜69%</td></tr>
+<tr><td>7</td><td><strong>ローソン</strong></td><td>コンビニ</td><td>約300〜510万円</td><td>売上総利益の45〜70%</td></tr>
+<tr><td>8</td><td><strong>トータルリペア</strong></td><td>リペア</td><td>350万〜450万円</td><td>月額7万円</td></tr>
+<tr><td>9</td><td><strong>わたしのハイフ。</strong></td><td>エステ</td><td>419万〜554万円</td><td>月額20.75万円</td></tr>
+<tr><td>10</td><td><strong>おそうじ本舗</strong></td><td>清掃</td><td>450万〜600万円</td><td>月額6万円</td></tr>
+<tr><td>11</td><td><strong>かたぎり塾</strong></td><td>パーソナルジム</td><td>約500万円</td><td>20〜25%</td></tr>
+<tr><td>12</td><td><strong>おたからや</strong></td><td>買取</td><td>500万〜700万円</td><td>月額22万円</td></tr>
+</tbody>
+</table></div>
+
+<h3>💰 500万〜1,000万円</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>業種</th><th>初期投資</th><th>ロイヤリティ</th></tr></thead>
+<tbody>
+<tr><td><strong>小顔専門店BUPURA</strong></td><td>エステ</td><td>586万〜781万円</td><td>月額11万円</td></tr>
+<tr><td><strong>鶏笑</strong></td><td>唐揚げ</td><td>600万〜900万円</td><td>0円</td></tr>
+<tr><td><strong>大黒屋</strong></td><td>買取</td><td>600万〜1,000万円</td><td>月額10万円</td></tr>
+<tr><td><strong>ファディー</strong></td><td>ジム</td><td>800万〜900万円</td><td>非公開</td></tr>
+<tr><td><strong>Beauty Face</strong></td><td>エステ</td><td>800万〜1,000万円</td><td>売上の7%</td></tr>
+<tr><td><strong>ハウスドゥ</strong></td><td>不動産</td><td>800万〜1,100万円</td><td>月額11万円</td></tr>
+<tr><td><strong>Dr.stretch</strong></td><td>ストレッチ</td><td>900万〜1,300万円</td><td>売上の約5%</td></tr>
+<tr><td><strong>Blanc</strong></td><td>まつエク</td><td>940万円〜</td><td>5〜15%</td></tr>
+<tr><td><strong>Goo-it!</strong></td><td>リラクゼーション</td><td>約950万円</td><td>月額22万円</td></tr>
+<tr><td><strong>アパマンショップ</strong></td><td>不動産</td><td>約1,000万円</td><td>月額7万円</td></tr>
+</tbody>
+</table></div>
+
+<h3>💰 1,000万〜3,000万円</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>業種</th><th>初期投資</th><th>ロイヤリティ</th></tr></thead>
+<tbody>
+<tr><td><strong>明光義塾</strong></td><td>学習塾</td><td>1,000万〜1,500万円</td><td>売上の10%</td></tr>
+<tr><td><strong>センチュリー21</strong></td><td>不動産</td><td>1,400万〜2,000万円</td><td>売上の約6%</td></tr>
+<tr><td><strong>銀だこ</strong></td><td>たこ焼き</td><td>1,500万〜3,000万円</td><td>売上の5%</td></tr>
+<tr><td><strong>ガリバー</strong></td><td>中古車</td><td>1,500万〜1,700万円</td><td>月額90万円</td></tr>
+<tr><td><strong>買取大吉</strong></td><td>買取</td><td>1,600万〜2,200万円</td><td>非公開</td></tr>
+<tr><td><strong>カーブス</strong></td><td>フィットネス</td><td>約1,700万円</td><td>売上の6%</td></tr>
+<tr><td><strong>Re.Ra.Ku</strong></td><td>ストレッチ</td><td>約2,108万円</td><td>売上の8%</td></tr>
+<tr><td><strong>chocoZAP</strong></td><td>ジム</td><td>2,200万円〜</td><td>売上の15%</td></tr>
+<tr><td><strong>CoCo壱番屋</strong></td><td>カレー</td><td>約2,700万円</td><td>0円（社員独立）</td></tr>
+<tr><td><strong>コインランドリー</strong></td><td>サービス</td><td>2,000万〜4,000万円</td><td>0円が多い</td></tr>
+</tbody>
+</table></div>
+
+<h3>💰 3,000万円以上</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>ブランド</th><th>業種</th><th>初期投資</th><th>ロイヤリティ</th></tr></thead>
+<tbody>
+<tr><td><strong>天下一品</strong></td><td>ラーメン</td><td>3,000万〜5,000万円</td><td>月額2.2万円</td></tr>
+<tr><td><strong>モスバーガー</strong></td><td>ハンバーガー</td><td>3,200万〜4,600万円</td><td>売上の1%</td></tr>
+<tr><td><strong>ドトール</strong></td><td>カフェ</td><td>3,500万〜6,000万円</td><td>売上の2%</td></tr>
+<tr><td><strong>ゴンチャ</strong></td><td>台湾茶</td><td>3,500万〜5,000万円</td><td>売上の3%</td></tr>
+<tr><td><strong>大戸屋</strong></td><td>定食</td><td>3,500万〜6,000万円</td><td>売上の3%</td></tr>
+<tr><td><strong>やよい軒</strong></td><td>定食</td><td>4,000万〜7,000万円</td><td>売上の2〜6%</td></tr>
+<tr><td><strong>ドミノ・ピザ</strong></td><td>宅配ピザ</td><td>4,300万〜5,000万円</td><td>売上の5.5%</td></tr>
+<tr><td><strong>マクドナルド</strong></td><td>ハンバーガー</td><td>5,000万〜1億円</td><td>売上の3%</td></tr>
+<tr><td><strong>コメダ珈琲</strong></td><td>カフェ</td><td>6,000万〜8,000万円</td><td>席数×1,500円/月</td></tr>
+<tr><td><strong>エニタイムフィットネス</strong></td><td>ジム</td><td>8,000万〜1億円</td><td>月額35万円</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション12: FC展開の教訓・失敗事例 -->
+<!-- ============================================================ -->
+<section id="sec12">
+<h2>12. FC展開の教訓・失敗事例</h2>
+
+<div class="alert alert-danger">
+<strong>⚠️ 乃が美（高級食パン）の教訓</strong>
+ピーク時230店舗 → 100店舗以下に激減。ブーム終焉後に9割の店舗が赤字化。ロイヤリティ10%が加盟店経営を圧迫。負債2億円のFCオーナーも。本部とオーナー間で複数の訴訟に発展。<br>
+→ <strong>教訓: 一過性ブームに依存するFCは極めて危険</strong>
+</div>
+
+<div class="alert alert-danger">
+<strong>⚠️ サブウェイの縮小</strong>
+ピーク時480店舗 → 約170店舗に激減。日本市場でのポジショニングに苦戦。<br>
+→ <strong>教訓: グローバルブランドでも日本市場への適応が不十分だと失敗する</strong>
+</div>
+
+<div class="alert alert-danger">
+<strong>⚠️ オートバックスのロイヤリティ大改定（2024年）</strong>
+ロイヤリティを1%→9%へ引き上げ（1975年以来初）。FC加盟店に大きな負担増。<br>
+→ <strong>教訓: 本部のロイヤリティ改定リスクは常に存在する</strong>
+</div>
+
+<div class="alert alert-danger">
+<strong>⚠️ QBハウスのFC契約反故</strong>
+過去にFC契約を反故にした事件が発生。その後、全店直営に完全転換。<br>
+→ <strong>教訓: FC本部の一方的な方針転換リスク</strong>
+</div>
+
+<h3>✅ 成功しているFCの共通点</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>成功要因</th><th>代表事例</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>ブーム依存でない安定需要</strong></td><td>カーブス、コメダ、エニタイムフィットネス</td></tr>
+<tr><td>2</td><td><strong>再現性の高いオペレーション</strong></td><td>マクドナルド、CoCo壱番屋</td></tr>
+<tr><td>3</td><td><strong>加盟店が利益を出せる収支構造</strong></td><td>ワークマン、CoCo壱番屋</td></tr>
+<tr><td>4</td><td><strong>定額ロイヤリティで売上増が加盟店利益に直結</strong></td><td>コメダ、天下一品、鳥貴族</td></tr>
+<tr><td>5</td><td><strong>長期的なブランド価値の構築</strong></td><td>セブンイレブン、エニタイムフィットネス</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- セクション13: curaimへの示唆 -->
+<!-- ============================================================ -->
+<section id="sec13">
+<h2>13. curaimへの示唆</h2>
+
+<h3>美容ブランドとしてのFC展開 推奨設計</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>項目</th><th>美容系の相場</th><th>curaim推奨レンジ</th></tr></thead>
+<tbody>
+<tr><td><strong>加盟金</strong></td><td>100万〜300万円</td><td><strong class="price">150万〜250万円</strong></td></tr>
+<tr><td><strong>ロイヤリティ</strong></td><td>売上の3〜15% or 定額5〜22万円</td><td><strong class="price">売上の5〜8%</strong> or <strong class="price">定額10万〜15万円</strong></td></tr>
+<tr><td><strong>保証金</strong></td><td>50万〜200万円</td><td><strong class="price">50万〜100万円</strong></td></tr>
+<tr><td><strong>初期投資総額</strong></td><td>300万〜1,500万円</td><td><strong class="price">500万〜1,000万円</strong></td></tr>
+</tbody>
+</table></div>
+
+<h3>乃が美の失敗から学ぶべきこと</h3>
+<div class="alert alert-info">
+<strong>4つの教訓</strong>
+① ブーム依存でない持続的な需要を確認してからFC展開<br>
+② ロイヤリティは加盟店が十分に利益を出せる水準に設定<br>
+③ 急拡大より質の高い加盟店を厳選<br>
+④ 加盟店とのフェアな関係構築（訴訟リスクの回避）
+</div>
+
+<h3>成功FCに学ぶべきモデル</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>モデル</th><th>参考FC</th><th>curaimへの応用</th></tr></thead>
+<tbody>
+<tr><td><strong>低リスク型</strong></td><td>ワークマン</td><td>本部が店舗・設備を用意し、加盟者のリスクを最小化</td></tr>
+<tr><td><strong>人材育成型</strong></td><td>CoCo壱番屋</td><td>社員育成後に独立させ、品質を担保</td></tr>
+<tr><td><strong>定額ロイヤリティ型</strong></td><td>コメダ珈琲</td><td>定額制で加盟者のモチベーション維持</td></tr>
+<tr><td><strong>ターゲット明確型</strong></td><td>カーブス</td><td>明確なターゲット層で安定需要を確保</td></tr>
+</tbody>
+</table></div>
+
+<h3>curaimの最優先アクション</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>優先度</th><th>アクション</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td><span class="badge badge-danger">最優先</span></td><td><strong>直営店の成功モデル確立・収支データ蓄積</strong></td><td>FC展開の全ての土台</td></tr>
+<tr><td><span class="badge badge-danger">最優先</span></td><td><strong>商標登録の出願</strong></td><td>登録まで5〜10ヶ月かかるため即着手</td></tr>
+<tr><td><span class="badge badge-warning">重要</span></td><td><strong>FC法務専門弁護士の選定</strong></td><td>契約書・開示書面の作成に不可欠</td></tr>
+<tr><td><span class="badge badge-warning">重要</span></td><td><strong>薬機法コンプライアンス体制の整備</strong></td><td>化粧品ブランドとして広告・表示の基準整備</td></tr>
+<tr><td><span class="badge badge-info">推奨</span></td><td><strong>オペレーションの標準化・マニュアル化</strong></td><td>再現可能な成功モデルの言語化</td></tr>
+</tbody>
+</table></div>
+
+</section>
+
+</div><!-- /.container -->
+
+<footer>
+  <p>本レポートの情報は2026年2月23日時点のWeb公開情報に基づいています。正確な最新条件は各本部への直接問い合わせが必要です。</p>
+  <p style="margin-top:8px">curaim FC展開プロジェクト ｜ 全11業種・80+ブランド網羅的調査</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全国フランチャイズ 全業態 統合データベース</title>
+<style>
+:root {
+  --primary: #1a237e;
+  --primary-light: #3949ab;
+  --accent: #ff6f00;
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #212121;
+  --text-light: #757575;
+  --border: #e0e0e0;
+  --success: #2e7d32;
+  --warning: #f57f17;
+  --danger: #c62828;
+  --info: #0277bd;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 2rem; text-align: center; }
+.header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.header p { opacity: 0.9; font-size: 0.95rem; }
+.container { max-width: 1600px; margin: 0 auto; padding: 1.5rem; }
+
+/* Summary Cards */
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.summary-card { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+.summary-card .number { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+.summary-card .label { font-size: 0.85rem; color: var(--text-light); margin-top: 0.3rem; }
+
+/* Filter Controls */
+.filter-section { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.filter-section h3 { margin-bottom: 1rem; color: var(--primary); }
+.filter-row { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; margin-bottom: 0.8rem; }
+.filter-btn { padding: 0.4rem 1rem; border: 2px solid var(--border); border-radius: 20px; background: white; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+.search-input { padding: 0.5rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 0.9rem; width: 300px; }
+.search-input:focus { outline: none; border-color: var(--primary); }
+select.filter-select { padding: 0.5rem 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 0.9rem; background: white; }
+
+/* Table */
+.table-wrapper { background: var(--card-bg); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow-x: auto; margin-bottom: 2rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+thead { background: var(--primary); color: white; position: sticky; top: 0; z-index: 10; }
+th { padding: 0.8rem 0.6rem; text-align: left; font-weight: 600; white-space: nowrap; cursor: pointer; user-select: none; }
+th:hover { background: var(--primary-light); }
+th .sort-icon { margin-left: 4px; opacity: 0.6; }
+td { padding: 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:hover { background: #e8eaf6; }
+tr.no-fc { opacity: 0.5; background: #fafafa; }
+.brand-name { font-weight: 700; color: var(--primary); white-space: nowrap; }
+.category-tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 10px; font-size: 0.72rem; font-weight: 600; white-space: nowrap; }
+.cat-food { background: #fff3e0; color: #e65100; }
+.cat-convenience { background: #e3f2fd; color: #0d47a1; }
+.cat-retail { background: #e8f5e9; color: #1b5e20; }
+.cat-fitness { background: #fce4ec; color: #880e4f; }
+.cat-beauty { background: #f3e5f5; color: #4a148c; }
+.cat-education { background: #e0f7fa; color: #006064; }
+.cat-realestate { background: #fff8e1; color: #f57f17; }
+.cat-auto { background: #eceff1; color: #37474f; }
+.cat-service { background: #e8eaf6; color: #1a237e; }
+.cat-repair { background: #fbe9e7; color: #bf360c; }
+.cat-buyback { background: #e0f2f1; color: #004d40; }
+.money { font-weight: 600; color: var(--text); text-align: right; white-space: nowrap; }
+.money-low { color: var(--success); }
+.money-mid { color: var(--warning); }
+.money-high { color: var(--danger); }
+.royalty { font-weight: 600; }
+.status-active { color: var(--success); font-weight: 600; }
+.status-limited { color: var(--warning); font-weight: 600; }
+.status-stopped { color: var(--danger); font-weight: 600; }
+.status-none { color: var(--text-light); }
+.inferred { font-style: italic; opacity: 0.8; }
+.note { font-size: 0.75rem; color: var(--text-light); max-width: 200px; }
+.warning-icon { color: var(--danger); }
+
+/* Section Headers */
+.section-header { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; margin: 2rem 0 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.section-header h2 { color: var(--primary); border-bottom: 3px solid var(--accent); padding-bottom: 0.5rem; display: inline-block; }
+
+/* Charts area */
+.charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.chart-card { background: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.chart-card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1rem; }
+.bar-chart { display: flex; flex-direction: column; gap: 0.4rem; }
+.bar-row { display: flex; align-items: center; gap: 0.5rem; }
+.bar-label { width: 140px; font-size: 0.78rem; text-align: right; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-container { flex: 1; height: 22px; background: #e0e0e0; border-radius: 4px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; }
+.bar-fill span { font-size: 0.7rem; color: white; font-weight: 600; white-space: nowrap; }
+
+.footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.3rem; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-input { width: 100%; }
+  .charts-grid { grid-template-columns: 1fr; }
+  table { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>全国フランチャイズ 全業態 統合データベース</h1>
+  <p>全16業態 / 70+ブランド | 加盟金・初期投資・ロイヤリティ・内装設備費・テナント費を網羅</p>
+  <p style="opacity:0.7; font-size:0.8rem;">調査日: 2026年2月23日 ｜ ※「推定」表記のある項目は公開情報からの推定値です</p>
+</div>
+
+<div class="container">
+
+<!-- Summary -->
+<div class="summary-grid">
+  <div class="summary-card"><div class="number">70+</div><div class="label">調査ブランド数</div></div>
+  <div class="summary-card"><div class="number">16</div><div class="label">業態カテゴリ</div></div>
+  <div class="summary-card"><div class="number">11万〜</div><div class="label">最低初期投資（公文式）</div></div>
+  <div class="summary-card"><div class="number">1億超</div><div class="label">最高初期投資（エニタイム等）</div></div>
+  <div class="summary-card"><div class="number">0円</div><div class="label">最低加盟金（CoCo壱等）</div></div>
+  <div class="summary-card"><div class="number">800万</div><div class="label">最高加盟金（ガリバー）</div></div>
+</div>
+
+<!-- Filter -->
+<div class="filter-section">
+  <h3>フィルター &amp; 検索</h3>
+  <div class="filter-row">
+    <input type="text" class="search-input" id="searchInput" placeholder="ブランド名で検索..." oninput="filterTable()">
+    <select class="filter-select" id="categoryFilter" onchange="filterTable()">
+      <option value="">全業態</option>
+      <option value="飲食">飲食</option>
+      <option value="コンビニ">コンビニ</option>
+      <option value="小売">小売</option>
+      <option value="フィットネス">フィットネス</option>
+      <option value="ストレッチ">ストレッチ</option>
+      <option value="リラクゼーション">リラクゼーション</option>
+      <option value="美容">美容</option>
+      <option value="教育">教育</option>
+      <option value="買取">買取</option>
+      <option value="ハウスサービス">ハウスサービス</option>
+      <option value="クリーニング">クリーニング</option>
+      <option value="不動産">不動産</option>
+      <option value="自動車">自動車</option>
+      <option value="修理">修理</option>
+      <option value="結婚相談">結婚相談</option>
+      <option value="コインランドリー">コインランドリー</option>
+    </select>
+    <select class="filter-select" id="statusFilter" onchange="filterTable()">
+      <option value="">全ステータス</option>
+      <option value="active">募集中</option>
+      <option value="limited">限定的</option>
+      <option value="stopped">停止/なし</option>
+    </select>
+    <select class="filter-select" id="investFilter" onchange="filterTable()">
+      <option value="">初期投資額</option>
+      <option value="100">〜100万円</option>
+      <option value="500">〜500万円</option>
+      <option value="1000">〜1000万円</option>
+      <option value="3000">〜3000万円</option>
+      <option value="5000">〜5000万円</option>
+      <option value="99999">5000万円超</option>
+    </select>
+  </div>
+  <div class="filter-row" style="font-size:0.8rem; color:var(--text-light);">
+    表示中: <span id="resultCount">70+</span> ブランド ｜ テーブルヘッダーをクリックでソート可能
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="charts-grid">
+  <div class="chart-card">
+    <h3>初期投資額ランキング（低い順 TOP15）</h3>
+    <div class="bar-chart" id="lowInvestChart"></div>
+  </div>
+  <div class="chart-card">
+    <h3>初期投資額ランキング（高い順 TOP15）</h3>
+    <div class="bar-chart" id="highInvestChart"></div>
+  </div>
+</div>
+
+<!-- Main Table -->
+<div class="table-wrapper">
+<table id="mainTable">
+<thead>
+<tr>
+  <th onclick="sortTable(0)">業態 <span class="sort-icon">&#x25B4;&#x25BE;</span></th>
+  <th onclick="sortTable(1)">ブランド名 <span class="sort-icon">&#x25B4;&#x25BE;</span></th>
+  <th onclick="sortTable(2)">店舗数 <span class="sort-icon">&#x25B4;&#x25BE;</span></th>
+  <th onclick="sortTable(3)">加盟金 <span class="sort-icon">&#x25B4;&#x25BE;</span></th>
+  <th onclick="sortTable(4)">初期投資総額 <span class="sort-icon">&#x25B4;&#x25BE;</span></th>
+  <th onclick="sortTable(5)">ロイヤリティ <span class="sort-icon">&#x25B4;&#x25BE;</span></th>
+  <th>内装・設備費</th>
+  <th>テナント・店舗取得費</th>
+  <th>募集状況</th>
+  <th>備考</th>
+</tr>
+</thead>
+<tbody id="tableBody">
+</tbody>
+</table>
+</div>
+
+<!-- Category Summary Tables -->
+<div class="section-header"><h2>業態別 平均値サマリー</h2></div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>業態カテゴリ</th><th>ブランド数</th><th>加盟金 平均</th><th>初期投資 平均</th><th>ロイヤリティ傾向</th><th>内装設備費 平均</th><th>テナント費 平均</th></tr>
+</thead>
+<tbody>
+<tr><td><span class="category-tag cat-food">飲食</span></td><td>26</td><td>約200万円</td><td>約3,500万円</td><td>売上の1〜10%</td><td>約2,000〜3,000万円</td><td>約500〜1,000万円</td></tr>
+<tr><td><span class="category-tag cat-convenience">コンビニ</span></td><td>3</td><td>約140万円</td><td>約300万円</td><td>売上総利益の43〜76%</td><td>本部負担が基本</td><td>本部負担が基本</td></tr>
+<tr><td><span class="category-tag cat-retail">小売</span></td><td>1</td><td>75万円</td><td>175万円</td><td>粗利の40%</td><td>本部負担</td><td>本部負担</td></tr>
+<tr><td><span class="category-tag cat-fitness">フィットネス</span></td><td>11</td><td>約250万円</td><td>約3,500万円</td><td>月額8〜35万円 or 売上15〜25%</td><td>約1,500〜4,000万円</td><td>約300〜1,000万円</td></tr>
+<tr><td><span class="category-tag cat-beauty">美容</span></td><td>11</td><td>約150万円</td><td>約700万円</td><td>売上の5〜15% or 月額11〜22万円</td><td>約200〜500万円</td><td>約100〜300万円</td></tr>
+<tr><td><span class="category-tag cat-education">教育</span></td><td>3</td><td>約80万円</td><td>約400万円</td><td>売上の10% or 月謝の50%</td><td>約200万円</td><td>約100万円（自宅可）</td></tr>
+<tr><td><span class="category-tag cat-buyback">買取</span></td><td>3</td><td>約210万円</td><td>約1,000万円</td><td>月額10〜22万円</td><td>約150万円</td><td>約200万円</td></tr>
+<tr><td><span class="category-tag cat-service">ハウスサービス</span></td><td>3</td><td>約170万円</td><td>約600万円</td><td>月額6万円 or 売上3〜10%</td><td>約150万円</td><td>0〜200万円</td></tr>
+<tr><td><span class="category-tag cat-realestate">不動産</span></td><td>3</td><td>約200万円</td><td>約1,100万円</td><td>月額7〜11万円 or 売上6%</td><td>約350万円</td><td>約300万円</td></tr>
+<tr><td><span class="category-tag cat-auto">自動車</span></td><td>4</td><td>約325万円</td><td>約3,000万円</td><td>月額5.5〜90万円 or 売上9%</td><td>数百〜数千万円</td><td>数百万〜数千万円</td></tr>
+<tr><td><span class="category-tag cat-repair">修理</span></td><td>2</td><td>約130万円</td><td>約250万円</td><td>月額6〜7万円</td><td>約100万円</td><td>0〜50万円</td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>全国フランチャイズ 全業態 統合データベース ｜ 調査日: 2026年2月23日</p>
+  <p>※本データはWeb公開情報に基づく調査結果であり、正確性を保証するものではありません。</p>
+  <p>※「推定」表記のデータは初期投資総額と公開情報から推計した参考値です。FC加盟検討時は必ず各本部に直接お問い合わせください。</p>
+</div>
+
+<script>
+const fcData = [
+  {cat:"飲食/ハンバーガー",catClass:"cat-food",brand:"マクドナルド",stores:"約2,988",fee:"250万",feeSortVal:250,invest:"5,000〜1億",investSortVal:5000,royalty:"売上3%＋広告4.5%＋IF0.7%",interior:"3,000〜6,000万（厨房・内装一式）",tenant:"1,000〜2,000万（既存店買取のため変動大）",status:"active",statusLabel:"募集中",note:"既存店買取方式。自己資金2,500万円以上必要"},
+  {cat:"飲食/ハンバーガー",catClass:"cat-food",brand:"モスバーガー",stores:"約1,318",fee:"200万",feeSortVal:200,invest:"4,000〜6,260万",investSortVal:4000,royalty:"売上1%＋広告1%",interior:"2,500〜4,000万（店舗設備一式）",tenant:"500〜1,500万",status:"active",statusLabel:"募集中",note:"ロイヤリティ1%は業界最低水準"},
+  {cat:"飲食/ハンバーガー",catClass:"cat-food",brand:"ケンタッキー（KFC）",stores:"約1,200",fee:"250万",feeSortVal:250,invest:"約5,000万",investSortVal:5000,royalty:"売上4〜5%",interior:"3,000〜4,000万（厨房・内装）",tenant:"500〜1,000万",status:"active",statusLabel:"募集中（法人のみ）",note:"契約更新料なし"},
+  {cat:"飲食/牛丼",catClass:"cat-food",brand:"すき家",stores:"約1,960",fee:"-",feeSortVal:0,invest:"-",investSortVal:0,royalty:"-",interior:"-",tenant:"-",status:"stopped",statusLabel:"FC募集なし（全店直営）",note:""},
+  {cat:"飲食/牛丼",catClass:"cat-food",brand:"吉野家",stores:"約1,200",fee:"150万",feeSortVal:150,invest:"500万〜",investSortVal:500,royalty:"売上3%＋広告1%",interior:"非公開",tenant:"非公開",status:"limited",statusLabel:"一般募集停止中",note:"法人個別交渉のみ"},
+  {cat:"飲食/定食",catClass:"cat-food",brand:"やよい軒",stores:"約360",fee:"500万",feeSortVal:500,invest:"800〜860万",investSortVal:800,royalty:"売上2〜6%（変動制）",interior:"本部負担（ユニットFC制度）",tenant:"本部負担",status:"active",statusLabel:"募集中",note:"ユニットFC制度で本部が建物・設備を用意"},
+  {cat:"飲食/定食",catClass:"cat-food",brand:"大戸屋",stores:"約311",fee:"400万",feeSortVal:400,invest:"約5,000万",investSortVal:5000,royalty:"非公開",interior:"2,250万（内外装費）",tenant:"500〜1,000万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中（法人中心）",note:"40坪モデル"},
+  {cat:"飲食/カレー",catClass:"cat-food",brand:"CoCo壱番屋",stores:"約1,245",fee:"<span class='money-low'>0円</span>",feeSortVal:0,invest:"6,000〜8,000万",investSortVal:6000,royalty:"<span class='money-low'>0円</span>",interior:"4,000〜6,000万 <span class='inferred'>推定</span>",tenant:"1,000〜2,000万 <span class='inferred'>推定</span>",status:"limited",statusLabel:"社員のれん分けのみ",note:"ブルームシステム：社員4〜5年勤務後に独立"},
+  {cat:"飲食/ラーメン",catClass:"cat-food",brand:"天下一品",stores:"約209",fee:"220万",feeSortVal:220,invest:"数千万",investSortVal:3000,royalty:"<span class='money-low'>月額2.2万円</span>",interior:"2,000〜3,000万 <span class='inferred'>推定</span>",tenant:"500〜1,000万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"セントラルキッチン方式。研修費無料"},
+  {cat:"飲食/中華",catClass:"cat-food",brand:"餃子の王将",stores:"約731",fee:"<span class='money-low'>0円</span>（社内独立）",feeSortVal:0,invest:"300〜500万（社内独立）",investSortVal:300,royalty:"月3万円（社内独立）",interior:"非公開",tenant:"非公開",status:"limited",statusLabel:"社内独立制度中心",note:"200名以上の社員がオーナーとして独立"},
+  {cat:"飲食/居酒屋",catClass:"cat-food",brand:"鳥貴族",stores:"652",fee:"低額（非公開）",feeSortVal:50,invest:"非公開",investSortVal:2000,royalty:"<span class='money-low'>月額5万円</span>",interior:"非公開",tenant:"非公開",status:"stopped",statusLabel:"一般募集停止（社員のみ）",note:"全品均一価格370円"},
+  {cat:"飲食/カフェ",catClass:"cat-food",brand:"コメダ珈琲店",stores:"約1,000",fee:"300万（1号店）",feeSortVal:300,invest:"5,000〜6,000万",investSortVal:5000,royalty:"席数×1,500円/月",interior:"2,000〜3,000万（内装・設備費）",tenant:"1,000〜2,000万（物件取得費）",status:"active",statusLabel:"募集中",note:"FC比率約99%"},
+  {cat:"飲食/カフェ",catClass:"cat-food",brand:"ドトールコーヒー",stores:"約1,000",fee:"150万",feeSortVal:150,invest:"5,000万超",investSortVal:5000,royalty:"<span class='money-low'>売上2%</span>",interior:"3,500〜4,000万（内装工事・厨房設備）",tenant:"保証金300万含む",status:"active",statusLabel:"募集中",note:"年中無休7:30〜21:00が原則"},
+  {cat:"飲食/カフェ",catClass:"cat-food",brand:"タリーズコーヒー",stores:"約820",fee:"400万",feeSortVal:400,invest:"約8,000万",investSortVal:8000,royalty:"売上5%＋販促2.5%",interior:"6,000〜7,000万（工事費概算）",tenant:"500〜1,000万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中（法人のみ）",note:"初期投資が高額"},
+  {cat:"飲食/台湾茶",catClass:"cat-food",brand:"ゴンチャ",stores:"176",fee:"200万",feeSortVal:200,invest:"3,500〜4,000万",investSortVal:3500,royalty:"売上3%＋広告3.5%",interior:"3,000万（設計管理工事費）",tenant:"300〜500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"投資回収40ヶ月以内目標"},
+  {cat:"飲食/宅配ピザ",catClass:"cat-food",brand:"ドミノ・ピザ",stores:"約1,015",fee:"非公開",feeSortVal:300,invest:"1,000〜2,000万",investSortVal:1000,royalty:"売上5%",interior:"800〜1,500万 <span class='inferred'>推定</span>",tenant:"200〜500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中（法人向け）",note:"1店舗平均年商9,000万〜1.1億円"},
+  {cat:"飲食/弁当",catClass:"cat-food",brand:"ほっともっと",stores:"約2,426",fee:"100万",feeSortVal:100,invest:"<span class='money-low'>約290万</span>",investSortVal:290,royalty:"月額8万円",interior:"本部負担（建物・設備を全て用意）",tenant:"本部負担",status:"limited",statusLabel:"募集一時休止中",note:"初期投資約290万円は業界屈指の低コスト"},
+  {cat:"飲食/たこ焼き",catClass:"cat-food",brand:"築地銀だこ",stores:"約500",fee:"200万",feeSortVal:200,invest:"約2,300万",investSortVal:2300,royalty:"売上5%",interior:"2,000万（店舗設備費）",tenant:"200〜500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"社員独立制度あり"},
+  {cat:"飲食/アイス",catClass:"cat-food",brand:"サーティワン",stores:"約1,165",fee:"200万",feeSortVal:200,invest:"500〜1,200万",investSortVal:500,royalty:"売上5%＋広告3%",interior:"300〜800万",tenant:"100〜300万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"5坪〜出店可能。季節変動大"},
+  {cat:"飲食/ドーナツ",catClass:"cat-food",brand:"ミスタードーナツ",stores:"約1,041",fee:"300万（参考）",feeSortVal:300,invest:"2,500〜3,000万",investSortVal:2500,royalty:"売上5%（参考）",interior:"2,200万（内装・厨房設備費）",tenant:"200〜500万 <span class='inferred'>推定</span>",status:"stopped",statusLabel:"新規募集休止中",note:"好調だが新規募集は休止"},
+  {cat:"飲食/パン",catClass:"cat-food",brand:"<span class='warning-icon'>&#9888;</span> 乃が美",stores:"約116（激減）",fee:"非公開",feeSortVal:500,invest:"非公開",investSortVal:3000,royalty:"売上10%",interior:"非公開",tenant:"非公開",status:"stopped",statusLabel:"募集停止（トラブル）",note:"<span class='warning-icon'>&#9888;</span>失敗事例。9割が赤字化。訴訟に発展"},
+  {cat:"飲食/唐揚げ",catClass:"cat-food",brand:"からやま",stores:"約121",fee:"500万",feeSortVal:500,invest:"8,000〜8,500万",investSortVal:8000,royalty:"売上3〜5%",interior:"6,000〜7,000万 <span class='inferred'>推定</span>",tenant:"500〜1,000万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中（法人中心）",note:"唐揚げ業態として初期投資が高額"},
+  {cat:"飲食/唐揚げ",catClass:"cat-food",brand:"鶏笑",stores:"200以上",fee:"130万",feeSortVal:130,invest:"低コスト",investSortVal:400,royalty:"<span class='money-low'>0円</span>",interior:"300〜600万 <span class='inferred'>推定</span>",tenant:"100〜300万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"ロイヤリティ0円が最大の魅力"},
+  {cat:"コンビニ",catClass:"cat-convenience",brand:"セブンイレブン",stores:"約21,681",fee:"260万（Aタイプ）",feeSortVal:260,invest:"260〜310万",investSortVal:260,royalty:"売上総利益43〜76%",interior:"本部負担（Aタイプ）",tenant:"本部負担（Aタイプ）",status:"active",statusLabel:"募集中",note:"日本最大のFCチェーン"},
+  {cat:"コンビニ",catClass:"cat-convenience",brand:"ファミリーマート",stores:"約16,404",fee:"<span class='money-low'>50万</span>（Bタイプ）",feeSortVal:50,invest:"約310万〜",investSortVal:310,royalty:"売上総利益49〜69%",interior:"本部負担（Bタイプ）",tenant:"本部負担（Bタイプ）",status:"active",statusLabel:"募集中",note:"加盟金が最も安い"},
+  {cat:"コンビニ",catClass:"cat-convenience",brand:"ローソン",stores:"約14,600",fee:"100万",feeSortVal:100,invest:"300〜510万",investSortVal:300,royalty:"売上総利益45〜70%",interior:"本部負担（タイプによる）",tenant:"本部負担（タイプによる）",status:"active",statusLabel:"募集中",note:"複数のFCタイプから選択可能"},
+  {cat:"小売",catClass:"cat-retail",brand:"ワークマン",stores:"約1,015",fee:"75万",feeSortVal:75,invest:"<span class='money-low'>約175万</span>",investSortVal:175,royalty:"粗利の40%",interior:"<span class='money-low'>本部負担</span>",tenant:"<span class='money-low'>本部負担</span>",status:"active",statusLabel:"募集中",note:"&#x1F31F; ホワイトFCの代名詞。FC比率94%"},
+  {cat:"フィットネス/24hジム",catClass:"cat-fitness",brand:"エニタイムフィットネス",stores:"約1,200",fee:"500万",feeSortVal:500,invest:"8,000〜1億",investSortVal:8000,royalty:"月額35万円（定額）",interior:"5,000〜7,000万（マシン・内装工事）",tenant:"1,000〜2,000万",status:"active",statusLabel:"募集中",note:"無人営業モデル。営業利益率約30%"},
+  {cat:"フィットネス/コンビニジム",catClass:"cat-fitness",brand:"チョコザップ",stores:"約1,800",fee:"200万",feeSortVal:200,invest:"2,200万〜",investSortVal:2200,royalty:"売上15%",interior:"1,500〜2,000万 <span class='inferred'>推定</span>",tenant:"300〜500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中（法人のみ）",note:"月額2,980円。2025年12月FC1号店"},
+  {cat:"フィットネス/24hジム",catClass:"cat-fitness",brand:"ワールドプラスジム",stores:"160以上",fee:"要問合せ",feeSortVal:300,invest:"約6,000万",investSortVal:6000,royalty:"月額33万円〜",interior:"3,000〜4,500万 <span class='inferred'>推定</span>",tenant:"500〜1,000万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"郊外型。3年間FC撤退ゼロ"},
+  {cat:"フィットネス/24hジム",catClass:"cat-fitness",brand:"HYPER FIT24",stores:"-",fee:"200万",feeSortVal:200,invest:"5,000万以上",investSortVal:5000,royalty:"月額8万円",interior:"3,000〜4,000万 <span class='inferred'>推定</span>",tenant:"500〜1,000万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"mybest2年連続顧客満足度No.1"},
+  {cat:"フィットネス/女性専用",catClass:"cat-fitness",brand:"カーブス",stores:"2,001",fee:"300万",feeSortVal:300,invest:"約1,700万",investSortVal:1700,royalty:"月会費売上の6%",interior:"800〜1,200万 <span class='inferred'>推定</span>",tenant:"200〜400万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"女性専用・1回30分。会員平均50代後半"},
+  {cat:"フィットネス/女性専用AI",catClass:"cat-fitness",brand:"ファディー（FURDI）",stores:"約70",fee:"360万",feeSortVal:360,invest:"800〜900万",investSortVal:800,royalty:"要問合せ",interior:"400〜600万 <span class='inferred'>推定</span>",tenant:"100〜200万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"女性専用AIパーソナルジム"},
+  {cat:"フィットネス/パーソナル",catClass:"cat-fitness",brand:"かたぎり塾",stores:"340以上",fee:"165万",feeSortVal:165,invest:"<span class='money-low'>約500万</span>",investSortVal:500,royalty:"20〜25%",interior:"200〜300万 <span class='inferred'>推定</span>",tenant:"50〜100万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"低コスト開業で急成長"},
+  {cat:"ストレッチ",catClass:"cat-fitness",brand:"Dr.stretch",stores:"約260",fee:"約200万 <span class='inferred'>推定</span>",feeSortVal:200,invest:"900〜1,300万",investSortVal:900,royalty:"売上の約5%",interior:"500〜800万 <span class='inferred'>推定</span>",tenant:"200〜400万 <span class='inferred'>推定</span>",status:"limited",statusLabel:"外部FC募集は限定的",note:"セミ直営方式"},
+  {cat:"ストレッチ",catClass:"cat-fitness",brand:"Re.Ra.Ku",stores:"約150",fee:"300万＋保証金50万",feeSortVal:300,invest:"約2,108万",investSortVal:2108,royalty:"売上の8%",interior:"1,200〜1,500万 <span class='inferred'>推定</span>",tenant:"300〜500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"月営業利益約110万円"},
+  {cat:"ストレッチ",catClass:"cat-fitness",brand:"ストレチックス",stores:"-",fee:"50万/ベッド〜",feeSortVal:50,invest:"250万〜＋物件費",investSortVal:250,royalty:"要問合せ",interior:"100〜200万 <span class='inferred'>推定</span>",tenant:"50〜150万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"最も低コストのストレッチFC"},
+  {cat:"リラクゼーション",catClass:"cat-fitness",brand:"Goo-it!",stores:"60以上",fee:"250万",feeSortVal:250,invest:"約950万",investSortVal:950,royalty:"月額22万円",interior:"400〜600万 <span class='inferred'>推定</span>",tenant:"200〜300万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"6〜7ヶ月で黒字化"},
+  {cat:"美容/エステ",catClass:"cat-beauty",brand:"Beauty Face",stores:"約83",fee:"200万（1号店）",feeSortVal:200,invest:"800〜1,000万",investSortVal:800,royalty:"売上の7%",interior:"400〜600万 <span class='inferred'>推定</span>",tenant:"200〜300万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"レディースシェービング特化"},
+  {cat:"美容/エステ",catClass:"cat-beauty",brand:"小顔専門店BUPURA",stores:"140〜170",fee:"242万（ライセンス料込）",feeSortVal:242,invest:"586〜781万",investSortVal:586,royalty:"月額11万円",interior:"137.5万（研修88万+機器38.5万+看板11万）",tenant:"約200万（店舗取得費）",status:"active",statusLabel:"募集中",note:"マンション1室でも開業可能。撤退0"},
+  {cat:"美容/エステ",catClass:"cat-beauty",brand:"わたしのハイフ。",stores:"150以上",fee:"0円（名目）/実質220万",feeSortVal:0,invest:"419〜554万",investSortVal:419,royalty:"月額20.75万円（マシンリース名目）",interior:"マシン代220万が主な設備費",tenant:"100〜200万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"セルフエステ。5ヶ月で100店舗達成"},
+  {cat:"美容/まつげ",catClass:"cat-beauty",brand:"Blanc",stores:"約104",fee:"150万",feeSortVal:150,invest:"約940万〜",investSortVal:940,royalty:"1年目5〜7%/2年目〜10〜15%",interior:"440万（内外装350万＋設備備品90万）",tenant:"200〜300万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"黒字化平均3ヶ月。赤字時ロイヤリティ0"},
+  {cat:"美容/まつげ",catClass:"cat-beauty",brand:"MAQUIA",stores:"180以上",fee:"<span class='money-low'>10万</span>（キャンペーン時）",feeSortVal:10,invest:"非公開（投資型FC）",investSortVal:500,royalty:"<span class='money-low'>0円</span>（キャンペーン）",interior:"非公開（運営は本部代行）",tenant:"非公開",status:"active",statusLabel:"募集中",note:"投資型FCモデル"},
+  {cat:"美容/美容室",catClass:"cat-beauty",brand:"ディアーズ（Dears）",stores:"174以上",fee:"0〜500万",feeSortVal:0,invest:"0〜500万",investSortVal:250,royalty:"非公開",interior:"非公開（面貸しからスタート可）",tenant:"非公開（面貸し型なら不要）",status:"active",statusLabel:"募集中",note:"髪質改善特化。ローリスクモデル"},
+  {cat:"美容/脱毛",catClass:"cat-beauty",brand:"メンズ脱毛MAX",stores:"約85〜89",fee:"非公開（開業20万〜）",feeSortVal:0,invest:"<span class='money-low'>20〜50万</span>",investSortVal:20,royalty:"月額15万円",interior:"10万 <span class='inferred'>推定</span>",tenant:"30万（不動産契約料）",status:"active",statusLabel:"募集中（四国・九州限定）",note:"業界最安クラスの初期投資"},
+  {cat:"教育/学習塾",catClass:"cat-education",brand:"公文式（KUMON）",stores:"約15,000",fee:"<span class='money-low'>約11万〜</span>",feeSortVal:11,invest:"<span class='money-low'>30〜100万</span>",investSortVal:30,royalty:"月謝の約50%",interior:"0〜30万（自宅開業可能）",tenant:"0〜50万（自宅の場合0円）",status:"active",statusLabel:"募集中",note:"世界最大規模の教育FC"},
+  {cat:"教育/学習塾",catClass:"cat-education",brand:"明光義塾",stores:"約1,700",fee:"200万",feeSortVal:200,invest:"1,000〜1,500万",investSortVal:1000,royalty:"売上の10%",interior:"500〜800万 <span class='inferred'>推定</span>",tenant:"200〜400万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"個別指導塾のパイオニア"},
+  {cat:"教育/英語",catClass:"cat-education",brand:"ECCジュニア",stores:"約14,000",fee:"<span class='money-low'>約20万〜</span>",feeSortVal:20,invest:"<span class='money-low'>20〜50万</span>",investSortVal:20,royalty:"なし（教材仕入で回収）",interior:"0〜10万（自宅開業可能）",tenant:"0円（自宅の場合）",status:"active",statusLabel:"募集中",note:"初期投資が極めて低い"},
+  {cat:"買取",catClass:"cat-buyback",brand:"おたからや",stores:"約500",fee:"275万",feeSortVal:275,invest:"500〜700万",investSortVal:500,royalty:"月額22万円",interior:"100〜200万 <span class='inferred'>推定</span>",tenant:"100〜200万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"買取専門店FC最大手。1人で運営可能"},
+  {cat:"買取",catClass:"cat-buyback",brand:"買取大吉",stores:"約850",fee:"200万",feeSortVal:200,invest:"1,600〜2,200万",investSortVal:1600,royalty:"非公開",interior:"200〜400万 <span class='inferred'>推定</span>",tenant:"300〜600万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"業界最大の店舗数"},
+  {cat:"買取",catClass:"cat-buyback",brand:"大黒屋",stores:"約240",fee:"150万",feeSortVal:150,invest:"600〜1,000万",investSortVal:600,royalty:"月額10万円",interior:"100〜300万 <span class='inferred'>推定</span>",tenant:"200〜400万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"ブランド品買取の老舗"},
+  {cat:"ハウスサービス",catClass:"cat-service",brand:"おそうじ本舗",stores:"約1,900",fee:"200万",feeSortVal:200,invest:"450〜600万",investSortVal:450,royalty:"<span class='money-low'>月額6万円</span>",interior:"100〜200万（清掃機材・車両等）",tenant:"<span class='money-low'>0円</span>（自宅開業・無店舗型）",status:"active",statusLabel:"募集中",note:"ハウスクリーニング業界No.1"},
+  {cat:"ハウスサービス",catClass:"cat-service",brand:"ダスキン",stores:"約5,000",fee:"100〜300万",feeSortVal:100,invest:"500〜1,500万",investSortVal:500,royalty:"売上の3〜10%",interior:"200〜800万",tenant:"100〜400万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"多角展開"},
+  {cat:"クリーニング",catClass:"cat-service",brand:"ホワイト急便",stores:"約5,000",fee:"<span class='money-low'>20万</span>（営業店）",feeSortVal:20,invest:"<span class='money-low'>70万〜</span>（営業店）",investSortVal:70,royalty:"非公開",interior:"30〜50万（取次店型）",tenant:"20〜50万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"取次店型なら極めて低コスト"},
+  {cat:"不動産",catClass:"cat-realestate",brand:"アパマンショップ",stores:"約1,100",fee:"100〜300万",feeSortVal:100,invest:"約1,000万",investSortVal:1000,royalty:"<span class='money-low'>月額7万円</span>",interior:"300〜500万 <span class='inferred'>推定</span>",tenant:"200〜400万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"賃貸仲介最大手"},
+  {cat:"不動産",catClass:"cat-realestate",brand:"センチュリー21",stores:"約960",fee:"150〜300万",feeSortVal:150,invest:"1,400〜2,000万",investSortVal:1400,royalty:"売上の約6%",interior:"500〜800万 <span class='inferred'>推定</span>",tenant:"300〜600万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"全店FC。世界86カ国展開"},
+  {cat:"不動産",catClass:"cat-realestate",brand:"ハウスドゥ",stores:"約700",fee:"165万",feeSortVal:165,invest:"800〜1,100万",investSortVal:800,royalty:"月額11万円＋広告3.3万＋WEB7.9万",interior:"200〜400万 <span class='inferred'>推定</span>",tenant:"200〜400万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"不動産売買仲介FC国内No.1"},
+  {cat:"自動車",catClass:"cat-auto",brand:"オートバックス",stores:"約1,032",fee:"100万",feeSortVal:100,invest:"数千万〜1億超",investSortVal:5000,royalty:"<span class='money-high'>売上の9%</span>（2024年改定）",interior:"数千万（大型店舗設備）",tenant:"数百万〜数千万",status:"active",statusLabel:"募集中",note:"&#9888; 2024年に1%→9%へ改定"},
+  {cat:"自動車",catClass:"cat-auto",brand:"イエローハット",stores:"751",fee:"300万",feeSortVal:300,invest:"3,500〜7,000万",investSortVal:3500,royalty:"固定制（具体額非公開）",interior:"2,000〜4,000万 <span class='inferred'>推定</span>",tenant:"500〜1,500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"固定ロイヤリティ制"},
+  {cat:"自動車",catClass:"cat-auto",brand:"カーコンビニ倶楽部",stores:"約1,000",fee:"97.9万〜",feeSortVal:98,invest:"<span class='money-low'>97.9万〜</span>",investSortVal:98,royalty:"<span class='money-low'>月額5.5万円</span>",interior:"0〜最小限（既存工場転換）",tenant:"0円（既存工場の場合）",status:"active",statusLabel:"募集中",note:"既存整備工場の看板掛け替えモデル"},
+  {cat:"自動車",catClass:"cat-auto",brand:"ガリバー",stores:"約440",fee:"800万",feeSortVal:800,invest:"1,500〜1,700万",investSortVal:1500,royalty:"<span class='money-high'>月額90万円</span>",interior:"200〜400万 <span class='inferred'>推定</span>",tenant:"保証金500万",status:"active",statusLabel:"募集中",note:"中古車買取販売最大手"},
+  {cat:"修理/リペア",catClass:"cat-repair",brand:"トータルリペア",stores:"約1,057",fee:"130万",feeSortVal:130,invest:"350〜450万",investSortVal:350,royalty:"<span class='money-low'>月額7万円</span>",interior:"150万（機材・材料費）",tenant:"<span class='money-low'>0円</span>（無店舗型）",status:"active",statusLabel:"募集中",note:"出張リペア専門。車1台で開業"},
+  {cat:"修理/スマホ",catClass:"cat-repair",brand:"アイサポ",stores:"約300",fee:"非公開",feeSortVal:100,invest:"<span class='money-low'>約100万</span>",investSortVal:100,royalty:"月額6万＋広告1.2万",interior:"50〜80万 <span class='inferred'>推定</span>",tenant:"20〜50万 <span class='inferred'>推定</span>",status:"active",statusLabel:"募集中",note:"スマホ修理FC最大手"},
+  {cat:"結婚相談",catClass:"cat-service",brand:"IBJ",stores:"約4,300",fee:"160〜320万",feeSortVal:160,invest:"160〜400万",investSortVal:160,royalty:"<span class='money-low'>月額1.9万円のみ</span>",interior:"0〜30万（自宅開業可能）",tenant:"0円（自宅の場合）",status:"active",statusLabel:"募集中",note:"副業OK。在庫不要"},
+  {cat:"コインランドリー",catClass:"cat-service",brand:"コインランドリー",stores:"多数",fee:"100〜300万",feeSortVal:100,invest:"2,000〜4,000万",investSortVal:2000,royalty:"0円のケースが多い",interior:"1,500〜3,000万（洗濯機・乾燥機等）",tenant:"200〜500万 <span class='inferred'>推定</span>",status:"active",statusLabel:"各社により異なる",note:"無人運営。設備費が投資の大半"},
+];
+
+// Render table
+function renderTable(data) {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  data.forEach(d => {
+    const statusClass = d.status === 'active' ? 'status-active' : d.status === 'limited' ? 'status-limited' : 'status-stopped';
+    const row = `<tr class="${d.status === 'stopped' ? 'no-fc' : ''}">
+      <td><span class="category-tag ${d.catClass}">${d.cat}</span></td>
+      <td class="brand-name">${d.brand}</td>
+      <td>${d.stores}</td>
+      <td class="money">${d.fee}</td>
+      <td class="money">${d.invest}</td>
+      <td class="royalty">${d.royalty}</td>
+      <td>${d.interior}</td>
+      <td>${d.tenant}</td>
+      <td class="${statusClass}">${d.statusLabel}</td>
+      <td class="note">${d.note}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+  document.getElementById('resultCount').textContent = data.length;
+}
+
+// Filter
+function filterTable() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const category = document.getElementById('categoryFilter').value;
+  const status = document.getElementById('statusFilter').value;
+  const investMax = parseInt(document.getElementById('investFilter').value) || 999999;
+
+  let filtered = fcData.filter(d => {
+    const matchSearch = !search || d.brand.toLowerCase().includes(search) || d.cat.toLowerCase().includes(search);
+    const matchCategory = !category || d.cat.includes(category);
+    const matchStatus = !status || d.status === status;
+    const matchInvest = d.investSortVal <= investMax;
+    return matchSearch && matchCategory && matchStatus && matchInvest;
+  });
+  renderTable(filtered);
+}
+
+// Sort
+let sortDir = {};
+function sortTable(col) {
+  const keys = ['cat','brand','stores','feeSortVal','investSortVal','royalty'];
+  const key = keys[col];
+  sortDir[col] = !sortDir[col];
+  const dir = sortDir[col] ? 1 : -1;
+
+  fcData.sort((a, b) => {
+    if (typeof a[key] === 'number') return (a[key] - b[key]) * dir;
+    return a[key].localeCompare(b[key], 'ja') * dir;
+  });
+  renderTable(fcData);
+}
+
+// Charts
+function renderCharts() {
+  const sorted = [...fcData].filter(d => d.investSortVal > 0).sort((a, b) => a.investSortVal - b.investSortVal);
+  const maxVal = Math.max(...sorted.map(d => d.investSortVal));
+
+  // Low investment chart
+  const lowChart = document.getElementById('lowInvestChart');
+  sorted.slice(0, 15).forEach(d => {
+    const pct = (d.investSortVal / 10000) * 100;
+    const color = d.investSortVal < 300 ? '#2e7d32' : d.investSortVal < 1000 ? '#f57f17' : '#c62828';
+    lowChart.innerHTML += `<div class="bar-row">
+      <div class="bar-label">${d.brand.replace(/<[^>]*>/g,'')}</div>
+      <div class="bar-container"><div class="bar-fill" style="width:${Math.max(pct,5)}%;background:${color}"><span>${d.investSortVal}万</span></div></div>
+    </div>`;
+  });
+
+  // High investment chart
+  const highChart = document.getElementById('highInvestChart');
+  sorted.slice(-15).reverse().forEach(d => {
+    const pct = (d.investSortVal / 10000) * 100;
+    const color = d.investSortVal >= 5000 ? '#c62828' : d.investSortVal >= 3000 ? '#f57f17' : '#1565c0';
+    highChart.innerHTML += `<div class="bar-row">
+      <div class="bar-label">${d.brand.replace(/<[^>]*>/g,'')}</div>
+      <div class="bar-container"><div class="bar-fill" style="width:${Math.min(pct,100)}%;background:${color}"><span>${d.investSortVal >= 1000 ? (d.investSortVal/10000).toFixed(1)+'億' : d.investSortVal+'万'}</span></div></div>
+    </div>`;
+  });
+}
+
+// Init
+renderTable(fcData);
+renderCharts();
+</script>
+</body>
+</html>
