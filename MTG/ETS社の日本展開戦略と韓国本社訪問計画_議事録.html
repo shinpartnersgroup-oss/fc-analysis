@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETS社の日本展開戦略と韓国本社訪問計画 - 議事録</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2b6cb0;
+      --accent: #e53e3e;
+      --accent-light: #fc8181;
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+      --success: #38a169;
+      --warning: #d69e2e;
+      --info: #3182ce;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 3rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .header-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .header-meta .icon {
+      width: 18px;
+      height: 18px;
+      opacity: 0.8;
+    }
+
+    /* Navigation */
+    .toc {
+      max-width: 1100px;
+      margin: -1.5rem auto 2rem;
+      padding: 0 1rem;
+    }
+    .toc-card {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 1.5rem 2rem;
+    }
+    .toc-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.4rem 2rem;
+    }
+    .toc-grid a {
+      color: var(--primary-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .toc-grid a:hover { color: var(--accent); }
+    .toc-grid a .num {
+      background: var(--primary);
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Main content */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
+    }
+
+    /* Section */
+    .section {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .section-header {
+      padding: 1.2rem 1.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .section-header:hover { background: #f0f4f8; }
+    .section-num {
+      background: var(--primary);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      flex: 1;
+    }
+    .section-toggle {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      transition: transform 0.3s;
+    }
+    .section.collapsed .section-toggle { transform: rotate(-90deg); }
+    .section.collapsed .section-body { display: none; }
+    .section-body {
+      padding: 1.5rem 1.8rem;
+    }
+
+    /* Lists */
+    .section-body ul {
+      list-style: none;
+      padding: 0;
+    }
+    .section-body ul li {
+      padding: 0.4rem 0 0.4rem 1.2rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    .section-body ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-light);
+    }
+    .section-body ul ul li::before {
+      background: var(--text-light);
+      width: 5px;
+      height: 5px;
+    }
+    .section-body ul ul {
+      margin-top: 0.2rem;
+    }
+
+    /* Highlight text */
+    .highlight {
+      background: linear-gradient(transparent 60%, #fefcbf 60%);
+      font-weight: 700;
+    }
+    strong { color: var(--primary); }
+
+    /* Sub-sections */
+    .subsection {
+      margin: 1rem 0;
+    }
+    .subsection h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin-bottom: 0.6rem;
+      padding-left: 0.8rem;
+      border-left: 3px solid var(--primary-light);
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    thead th {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.7rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    thead th:first-child { border-radius: 8px 0 0 0; }
+    thead th:last-child { border-radius: 0 8px 0 0; }
+    tbody td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:hover { background: #f0f7ff; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* Badge / Tag */
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .badge-red { background: #fed7d7; color: #c53030; }
+    .badge-blue { background: #bee3f8; color: #2b6cb0; }
+    .badge-green { background: #c6f6d5; color: #276749; }
+    .badge-yellow { background: #fefcbf; color: #975a16; }
+    .badge-gray { background: #e2e8f0; color: #4a5568; }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.4rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-light);
+      background: #fff;
+      z-index: 1;
+    }
+    .timeline-date {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-content {
+      background: #f7fafc;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    /* Decision cards */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .decision-card {
+      background: #f0f7ff;
+      border: 1px solid #bee3f8;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+    .decision-card .dc-num {
+      background: var(--info);
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .decision-card p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Person cards */
+    .person-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 0.8rem;
+    }
+    .person-card {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fafbfc;
+    }
+    .person-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .person-info { flex: 1; }
+    .person-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+    .person-role {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* Alert box */
+    .alert {
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      margin: 0.8rem 0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .alert-warning {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+    }
+    .alert-danger {
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }
+    .alert-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* Print */
+    @media print {
+      .header { padding: 1.5rem; }
+      .section { break-inside: avoid; box-shadow: none; }
+      .section-header { cursor: default; }
+      .section.collapsed .section-body { display: block !important; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.3rem; }
+      .header-meta { flex-direction: column; gap: 0.5rem; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .decision-grid { grid-template-columns: 1fr; }
+      .person-grid { grid-template-columns: 1fr; }
+      .section-body { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <h1>ETS社の日本展開戦略と韓国本社訪問計画</h1>
+      <div class="header-meta">
+        <span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          2026年3月6日
+        </span>
+        <span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          代表、シンくん、大ちゃん 他スタッフ
+        </span>
+        <span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          社内ミーティング
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Table of Contents -->
+  <nav class="toc">
+    <div class="toc-card">
+      <div class="toc-title">目次</div>
+      <div class="toc-grid">
+        <a href="#sec1"><span class="num">1</span> ETS社のブランド力とプレゼン戦略</a>
+        <a href="#sec2"><span class="num">2</span> 韓国本社訪問計画</a>
+        <a href="#sec3"><span class="num">3</span> FC展開の戦略と契約条件</a>
+        <a href="#sec4"><span class="num">4</span> ロイヤリティの設定</a>
+        <a href="#sec5"><span class="num">5</span> 契約書の重要事項</a>
+        <a href="#sec6"><span class="num">6</span> 加盟店とFCの差別化</a>
+        <a href="#sec7"><span class="num">7</span> 商品供給・物流体制</a>
+        <a href="#sec8"><span class="num">8</span> 研修体制</a>
+        <a href="#sec9"><span class="num">9</span> スーパーバイザー（SV）制度</a>
+        <a href="#sec10"><span class="num">10</span> 売上データ・提案資料の整備</a>
+        <a href="#sec11"><span class="num">11</span> 決定事項まとめ</a>
+        <a href="#sec12"><span class="num">12</span> アクションアイテム</a>
+        <a href="#sec13"><span class="num">13</span> 関係者一覧</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- 1. ETS社のブランド力 -->
+    <section class="section" id="sec1">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">1</span>
+        <h2>ETS社のブランド力とプレゼン戦略</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>ETS社のブランド力を<strong>最大限に活かしたプレゼンテーション</strong>を行う方針</li>
+          <li>売上規模・歴史・実績を正確に把握しておく必要がある</li>
+          <li>「ガンマ」製品を保有する兄弟（財閥的存在）が上位にいるとされるが、実態確認が必要</li>
+        </ul>
+        <div class="alert alert-warning">
+          <span class="alert-icon">&#9888;</span>
+          <span>韓国ビジネスの特徴として「大きく見せる」傾向があるため、<strong>裏取り（事実確認）が重要</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 韓国本社訪問計画 -->
+    <section class="section" id="sec2">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">2</span>
+        <h2>韓国本社訪問計画</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">3月 <span class="badge badge-blue">代表単独</span></div>
+            <div class="timeline-content">
+              本社との関係強化、データ収集。ガンマ工場視察の件を協議。
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">4月頃 <span class="badge badge-green">複数名</span></div>
+            <div class="timeline-content">
+              <strong>フランチャイズ関連資料</strong>を持参して再訪問。ガンマ製造の鉱石工場を視察（山の石を砕く工程）。会長への挨拶。通訳スタッフ同行可能。
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">6月29日〜7月1日 <span class="badge badge-red">ソウル</span></div>
+            <div class="timeline-content">
+              <strong>CURAIMパーティー</strong>（半年間のランキング発表：売上・ビューアフター）。世界大会的位置付け（日本・韓国中心）。ドレスコードあり。朝から研修、夕方からパーティーの韓国式形式。パーティー前後にミーティング時間を確保。
+              <br><br>
+              <span style="color:var(--text-light);">宿泊候補：ソウル明洞周辺、パラダイスシティ / 中島さんも参加検討</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FC展開の戦略と契約条件 -->
+    <section class="section" id="sec3">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">3</span>
+        <h2>FC展開の戦略と契約条件</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="subsection">
+          <h3>契約構造（2層構造）</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>契約</th><th>当事者</th><th>内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge-blue">マスターFC契約</span></td><td>MEGAMI合同会社 ⇔ ETS社/日本法人</td><td>日本展開の権利</td></tr>
+                <tr><td><span class="badge badge-green">FC契約</span></td><td>本部（MEGAMI）⇔ 各加盟店</td><td>個別店舗への権利付与</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>加盟金の構成</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>種別</th><th>金額</th><th>内訳</th></tr></thead>
+              <tbody>
+                <tr><td>現在の加盟店</td><td><strong>660万円</strong></td><td>契約金200万円 + 商材費400万円</td></tr>
+                <tr><td>FC加盟金</td><td><strong>400万円</strong></td><td>200万円（MEGAMIへ）+ 200万円上乗せ</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>営業権利金について</h3>
+          <ul>
+            <li>営業担当に権利金2,500万円を課すことへの異議あり</li>
+            <li>営業コスト（交通費・接待費）を自己負担する立場で権利金は不合理</li>
+          </ul>
+          <div class="alert alert-warning">
+            <span class="alert-icon">&#10140;</span>
+            <span><strong>契約成立時のパーセンテージ制</strong>を採用する方針</span>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>エリア制</h3>
+          <ul>
+            <li>データ不足のため当面は<strong>単店出店</strong></li>
+            <li>将来的にエリア一括購入の権利付与を検討</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ロイヤリティの設定 -->
+    <section class="section" id="sec4">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">4</span>
+        <h2>ロイヤリティの設定</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>方式</th><th>メリット</th><th>デメリット</th></tr></thead>
+            <tbody>
+              <tr><td>パーセンテージ制</td><td>売上に比例した公平性</td><td>売上が少ない場合の収入不安定</td></tr>
+              <tr><td>定額制（1日いくら）</td><td>安定した収入</td><td>売上に関わらず一定負担</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="alert alert-danger">
+          <span class="alert-icon">&#9888;</span>
+          <span><strong>売上管理システムの導入が不可欠</strong> &#8212; 予約管理システムで本部が売上をリアルタイム把握。売上の過少申告リスクへの対策としても重要。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 契約書の重要事項 -->
+    <section class="section" id="sec5">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">5</span>
+        <h2>契約書の重要事項</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="width:160px;">項目</th><th>内容</th><th style="width:100px;">重要度</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>同業種NG</strong></td>
+                <td>情報流出防止のため同業種の加盟を禁止。発覚時は権利剥奪。</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td><strong>加盟金の性質</strong></td>
+                <td>一時金（返金不可）であることを明記。設備費・広告宣伝費は別途負担。</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td><strong>商標・ブランド管理</strong></td>
+                <td>「公式」「日本本部」の表現は<strong>使用禁止</strong> → <span class="highlight">「正規公認フランチャイズ」に統一</span></td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td><strong>価格統一</strong></td>
+                <td><span class="highlight">定価5万5千円を下回ることを禁止</span>。値下げ発覚時は権利剥奪。ネット安売りも禁止。</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td><strong>覚書</strong></td>
+                <td>契約書本体とは別に細かいルールを覚書として整備。</td>
+                <td><span class="badge badge-yellow">重要</span></td>
+              </tr>
+              <tr>
+                <td><strong>トラブル対応</strong></td>
+                <td>都度協議。基本は寄り添う姿勢でタイムリーに対処。</td>
+                <td><span class="badge badge-yellow">重要</span></td>
+              </tr>
+              <tr>
+                <td><strong>供給途絶リスク</strong></td>
+                <td>将来的には日本国内製造体制の構築を目指す。</td>
+                <td><span class="badge badge-gray">中長期</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 加盟店とFCの差別化 -->
+    <section class="section" id="sec6">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">6</span>
+        <h2>加盟店とFCの差別化</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="subsection">
+          <h3>現在の加盟店の位置付け</h3>
+          <ul>
+            <li>CURAIMの看板は<strong>使用不可</strong></li>
+            <li>既存店舗にメニューとして導入する形（メニューフランチャイズ）</li>
+          </ul>
+        </div>
+        <div class="subsection">
+          <h3>FC限定の差別化メニュー（検討中）</h3>
+          <div class="decision-grid">
+            <div class="decision-card">
+              <span class="dc-num" style="background:var(--accent);">1</span>
+              <p>微小循環器によるトータルケアメニュー</p>
+            </div>
+            <div class="decision-card">
+              <span class="dc-num" style="background:var(--accent);">2</span>
+              <p>ヘッドスパ（ドライヘッドスパ）の技術提供</p>
+            </div>
+            <div class="decision-card">
+              <span class="dc-num" style="background:var(--accent);">3</span>
+              <p>水素吸入器のオプション設置</p>
+            </div>
+            <div class="decision-card">
+              <span class="dc-num" style="background:var(--accent);">4</span>
+              <p>ファスティング（断食プログラム）のCURAIMブランド化</p>
+            </div>
+            <div class="decision-card">
+              <span class="dc-num" style="background:var(--accent);">5</span>
+              <p>FC限定商品のリリース</p>
+            </div>
+            <div class="decision-card">
+              <span class="dc-num" style="background:var(--accent);">6</span>
+              <p>まつげ・眉毛の育毛メニュー</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. 商品供給・物流体制 -->
+    <section class="section" id="sec7">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">7</span>
+        <h2>商品供給・物流体制</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>韓国からの直輸入は不可 → <strong>代行会社を経由</strong>（手数料約10%）</li>
+          <li>MEGAMI社が半年前に前払いで在庫購入（<strong>約2,000万円規模</strong>）</li>
+          <li>FC店舗への発送は<strong>MEGAMI社から直接</strong>（送料効率を考慮）</li>
+          <li>ガンマの製造リードタイム：<span class="highlight">発注から6ヶ月</span></li>
+        </ul>
+        <div class="alert alert-warning">
+          <span class="alert-icon">&#9888;</span>
+          <span><strong>最低発注ロットの設定が必要</strong> &#8212; 現在1箱単位で非効率 → 最低10箱程度を検討</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. 研修体制 -->
+    <section class="section" id="sec8">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">8</span>
+        <h2>研修体制</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="subsection">
+          <h3>現状（加盟店向け）→ 2日間のみ</h3>
+        </div>
+        <div class="subsection">
+          <h3>FC向け研修（大幅に充実化）</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th style="width:120px;">項目</th><th>内容</th></tr></thead>
+              <tbody>
+                <tr><td><strong>期間</strong></td><td>約1週間</td></tr>
+                <tr><td><strong>費用</strong></td><td>約50万円</td></tr>
+                <tr><td><strong>内容</strong></td><td>技術研修 + 接客研修（お辞儀の角度、スリッパの並べ方まで）</td></tr>
+                <tr><td><strong>主要講師</strong></td><td>原先生：技術指導 / 晶子先生：接客指導（資格保有）</td></tr>
+                <tr><td><strong>場所</strong></td><td>本社（モチベーション向上のため）</td></tr>
+                <tr><td><strong>更新研修</strong></td><td>年1〜2回のバージョンアップ研修を実施</td></tr>
+                <tr><td><strong>特典</strong></td><td>県外研修生には一蘭本店訪問などモチベーション向上施策</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. SV制度 -->
+    <section class="section" id="sec9">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">9</span>
+        <h2>スーパーバイザー（SV）制度</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>SVが<strong>1ヶ月間</strong>みっちり店舗に入り込んで指導</li>
+          <li>SV費用：月額<strong>約80万円</strong>（売上向上効果で実質プラス）</li>
+          <li>課題：SV人材が限られている（現状は原先生のみ → 同時進行が困難）</li>
+        </ul>
+        <div class="subsection">
+          <h3>運用施策</h3>
+          <ul>
+            <li>毎日の<strong>Zoom報告会</strong></li>
+            <li>技術動画の提出</li>
+            <li><strong>AIによる録音分析</strong>（カウンセリング・クロージングの質向上）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. 売上データ -->
+    <section class="section" id="sec10">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num">10</span>
+        <h2>売上データ・提案資料の整備</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <ul>
+          <li>銀行への借入提案資料に<strong>売上予測値</strong>が必要</li>
+          <li>マックス / ノーマル / ネガティブの<strong>3パターン</strong>のシミュレーション</li>
+          <li>固定費（日常経費、電気代、水道光熱費等）の算出</li>
+          <li>成功事例のデータ収集 → 大津先生、晶子先生の店舗に依頼</li>
+          <li>苫小牧市の資料を参考にする</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 11. 決定事項 -->
+    <section class="section" id="sec11">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num" style="background:var(--success);">&#10003;</span>
+        <h2>決定事項まとめ</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="decision-grid">
+          <div class="decision-card">
+            <span class="dc-num">1</span>
+            <p>FC加盟金は<strong>400万円</strong>（200万 + 200万の構成）</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">2</span>
+            <p><strong>同業種NG</strong>の契約条項を必ず盛り込む</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">3</span>
+            <p>「公式」表記の禁止 → <strong>「正規公認フランチャイズ」</strong>に統一</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">4</span>
+            <p>定価維持義務（<strong>値下げ即権利剥奪</strong>）</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">5</span>
+            <p>商品発送は<strong>MEGAMI社から直接</strong>FC店舗へ</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">6</span>
+            <p><strong>最低発注ロット</strong>を商材ごとに設定</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">7</span>
+            <p>研修は<strong>1週間程度</strong>で充実させる</p>
+          </div>
+          <div class="decision-card">
+            <span class="dc-num">8</span>
+            <p>営業権利金は課さず、<strong>契約成立時のパーセンテージ制</strong>を採用</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. アクションアイテム -->
+    <section class="section" id="sec12">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num" style="background:var(--accent);">!</span>
+        <h2>アクションアイテム</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="width:110px;">時期</th><th style="width:110px;">担当</th><th>タスク</th></tr></thead>
+            <tbody>
+              <tr><td><span class="badge badge-blue">3月</span></td><td>代表</td><td>韓国訪問。ETS社の歴史・売上規模・財務データを確認</td></tr>
+              <tr><td><span class="badge badge-blue">4月頃</span></td><td>代表 + 複数名</td><td>FC資料を持って韓国再訪問。ガンマ製造工場の視察。会長へ挨拶</td></tr>
+              <tr><td><span class="badge badge-green">5月3日頃</span></td><td>幹部</td><td>東京で幹部会議（ディレクター + FCオーナー）開催</td></tr>
+              <tr><td><span class="badge badge-green">6月</span></td><td>中島さん</td><td>研修開始・FC開業準備</td></tr>
+              <tr><td><span class="badge badge-red">6/29〜7/1</span></td><td>全体</td><td>韓国パーティー参加（ソウル）</td></tr>
+              <tr><td><span class="badge badge-gray">随時</span></td><td>シンくん</td><td>契約書の修正・覚書の作成</td></tr>
+              <tr><td><span class="badge badge-gray">随時</span></td><td>-</td><td>売上データの収集と予測モデルの作成</td></tr>
+              <tr><td><span class="badge badge-gray">随時</span></td><td>-</td><td>予約管理システムの導入検討</td></tr>
+              <tr><td><span class="badge badge-gray">随時</span></td><td>-</td><td>FC限定メニュー（水素吸入、ファスティング等）の具体化</td></tr>
+              <tr><td><span class="badge badge-gray">随時</span></td><td>代表</td><td>千葉さんとファスティングのCURAIMブランド化について相談</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. 関係者一覧 -->
+    <section class="section" id="sec13">
+      <div class="section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <span class="section-num" style="background:var(--text-light);">&#9823;</span>
+        <h2>関係者一覧</h2>
+        <span class="section-toggle">&#9660;</span>
+      </div>
+      <div class="section-body">
+        <div class="person-grid">
+          <div class="person-card">
+            <div class="person-avatar">代</div>
+            <div class="person-info">
+              <div class="person-name">代表</div>
+              <div class="person-role">MEGAMI合同会社代表。CURAIM日本展開統括。韓国本社との窓口。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">シ</div>
+            <div class="person-info">
+              <div class="person-name">シンくん</div>
+              <div class="person-role">FC情報発信・統一管理の中心人物。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">中</div>
+            <div class="person-info">
+              <div class="person-name">中島さん</div>
+              <div class="person-role">FCオーナー候補。研修受講予定。韓国訪問も検討。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">原</div>
+            <div class="person-info">
+              <div class="person-name">原先生</div>
+              <div class="person-role">技術研修の主要講師。SV的役割も担う。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">晶</div>
+            <div class="person-info">
+              <div class="person-name">晶子先生</div>
+              <div class="person-role">接客研修スペシャリスト（資格保有）。加盟店の成功事例。売上データ提供を期待。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">小</div>
+            <div class="person-info">
+              <div class="person-name">小川さん</div>
+              <div class="person-role">ディレクター。協力的で頼りになる存在。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">よ</div>
+            <div class="person-info">
+              <div class="person-name">ようこさん（茨城）</div>
+              <div class="person-role">ディレクター。データ管理が得意で売上好調。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">千</div>
+            <div class="person-info">
+              <div class="person-name">千葉さん</div>
+              <div class="person-role">コンサルタント的存在。Instagramフォロワー20万人。ファスティング事業展開。</div>
+            </div>
+          </div>
+          <div class="person-card">
+            <div class="person-avatar">大</div>
+            <div class="person-info">
+              <div class="person-name">大ちゃん</div>
+              <div class="person-role">参加者。韓国訪問にも参加予定。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align:center; padding:2rem; color:var(--text-light); font-size:0.8rem; border-top:1px solid var(--border);">
+    MEGAMI合同会社 / CURAIM-FC &mdash; 議事録作成日 2026年3月6日
+  </footer>
+
+</body>
+</html>
