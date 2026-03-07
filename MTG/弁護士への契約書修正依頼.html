@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【CURAIM FC】フランチャイズ契約書の修正および覚書作成のご依頼</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2b6cb0;
+      --accent: #c53030;
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #2d3748;
+      --text-light: #718096;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 2.5rem 2rem 2rem;
+    }
+    .header-inner { max-width: 900px; margin: 0 auto; }
+    .header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .header-sub { font-size: 0.9rem; opacity: 0.85; }
+    .header-meta {
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;
+    }
+
+    .main { max-width: 900px; margin: 2rem auto; padding: 0 1rem 4rem; }
+
+    /* Greeting */
+    .greeting {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Section */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .section-title {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title .num {
+      background: rgba(255,255,255,0.2);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0;
+    }
+    .section-body { padding: 1.5rem 2rem; }
+
+    /* Sub-section */
+    .sub {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sub:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .sub h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin-bottom: 0.6rem;
+      padding-left: 0.8rem;
+      border-left: 3px solid var(--primary-light);
+    }
+
+    /* Clause ref */
+    .clause-ref {
+      display: inline-block;
+      background: #ebf4ff;
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.1rem 0.6rem;
+      border-radius: 4px;
+      margin-right: 0.3rem;
+    }
+
+    ul { list-style: none; padding: 0; }
+    ul li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+      font-size: 0.93rem;
+    }
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.75rem;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary-light);
+    }
+
+    strong { color: var(--primary); }
+
+    /* Alert */
+    .alert {
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      margin: 0.8rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .alert-red {
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }
+    .alert-blue {
+      background: #eff6ff;
+      border: 1px solid #93c5fd;
+      color: #1e40af;
+    }
+    .alert-yellow {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      color: #92400e;
+    }
+    .alert-icon { flex-shrink: 0; font-size: 1rem; }
+
+    /* Table */
+    .table-wrapper { overflow-x: auto; margin: 0.8rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    thead th {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    thead th:first-child { border-radius: 6px 0 0 0; }
+    thead th:last-child { border-radius: 0 6px 0 0; }
+    tbody td {
+      padding: 0.5rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.1rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .badge-red { background: #fed7d7; color: #c53030; }
+    .badge-blue { background: #bee3f8; color: #2b6cb0; }
+    .badge-yellow { background: #fefcbf; color: #975a16; }
+    .badge-green { background: #c6f6d5; color: #276749; }
+
+    .highlight {
+      background: linear-gradient(transparent 60%, #fefcbf 60%);
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media print {
+      .section { break-inside: avoid; box-shadow: none; }
+      body { font-size: 13px; }
+    }
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.2rem; }
+      .section-body { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <h1>【CURAIM FC】フランチャイズ契約書の修正および覚書作成のご依頼</h1>
+      <div class="header-sub">MEGAMI合同会社 → 弁護士先生宛</div>
+      <div class="header-meta">
+        <span>作成日：2026年3月7日</span>
+        <span>対象：FC契約書 / マスターFC契約書 / 覚書</span>
+        <span>希望納期：2026年3月中</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- 挨拶 -->
+    <div class="greeting">
+      <p>先生</p>
+      <p>いつもお世話になっております。MEGAMI合同会社の〇〇です。</p>
+      <br>
+      <p>先日社内にてフランチャイズ展開に関するミーティングを行い、契約書に盛り込むべき事項および覚書として整備すべきルールが固まりました。既存の契約書に対する具体的な条項修正と、新たに作成いただきたい覚書について、以下の通りご依頼申し上げます。</p>
+    </div>
+
+    <!-- 契約構造 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="num">0</span>
+        契約構造の全体像
+      </div>
+      <div class="section-body">
+        <p style="margin-bottom:0.8rem;">本事業は以下の<strong>2層構造</strong>です。今回は両契約に対する修正依頼となります。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>契約</th><th>当事者</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-blue">マスターFC契約</span></td>
+                <td>MEGAMI合同会社 ⇔ ETS社（韓国）/ 日本法人</td>
+                <td>日本における独占展開権</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-green">FC契約</span></td>
+                <td>MEGAMI合同会社（本部）⇔ 各加盟店</td>
+                <td>個別店舗へのFC権利付与</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. FC契約書の修正 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="num">1</span>
+        フランチャイズ契約書の修正事項
+      </div>
+      <div class="section-body">
+
+        <div class="sub">
+          <h3>（1）同業種加盟の禁止・競業避止</h3>
+          <ul>
+            <li>同業者（美容・エステ・プラズマ関連事業）を営む者のFC加盟を<strong>禁止</strong></li>
+            <li>目的：技術情報・ノウハウの流出防止</li>
+            <li>違反が発覚した場合：<span class="highlight">無催告解除（FC権利の即時剥奪）</span></li>
+            <li>加盟申込時に同業種でないことの<strong>申告・誓約</strong>を求める条項も追加希望</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（2）加盟金の定義と性質の明確化</h3>
+          <div class="alert alert-blue">
+            <span class="alert-icon">&#9432;</span>
+            <span><span class="clause-ref">第4条2項</span>内外装などは加盟金に含まないことを明記</span>
+          </div>
+          <div class="alert alert-blue">
+            <span class="alert-icon">&#9432;</span>
+            <span><span class="clause-ref">第8条</span>広告宣伝費も加盟金に含まないことを明記</span>
+          </div>
+          <ul>
+            <li>FC加盟金：<strong>400万円（税別）</strong> ※現時点での金額</li>
+            <li>加盟金は<strong>一時金</strong>であり、理由の如何を問わず<strong>返金不可</strong>である旨を明記</li>
+            <li>設備費・広告宣伝費・内装費等は加盟金に含まれず、<strong>加盟店側の別途負担</strong>であることを明確化</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（3）商標・ブランド表記の制限</h3>
+          <ul>
+            <li>加盟店が使用できる表記は<span class="highlight">「正規公認フランチャイズ」</span>のみ</li>
+            <li>以下の表現は<strong>使用禁止</strong>：「公式」「日本本部」「本店」その他、本部と誤認させる表現全般</li>
+            <li>違反時の措置についても規定</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（4）価格維持義務（再販売価格の維持）</h3>
+          <ul>
+            <li>CURAIMの施術料金は<strong>定価5万5千円</strong>に固定し、これを下回る価格での提供を<strong>禁止</strong></li>
+            <li>インターネット上での値引き販売・クーポン発行等も禁止対象</li>
+            <li>違反が確認された場合：<span class="highlight">FC権利の即時剥奪（契約解除事由）</span></li>
+          </ul>
+          <div class="alert alert-red">
+            <span class="alert-icon">&#9888;</span>
+            <span><strong>法的アドバイス希望</strong>：独占禁止法上の懸念等について、法的観点からのご見解をお願いします。大量購入を促し最低価格を割って提供をしようとするフランチャイジーが発生する可能性が高いため、規制を強くしたい意向です。</span>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>（5）供給途絶時の対応</h3>
+          <ul>
+            <li>韓国本社からの商品供給が停止した場合の対応条項</li>
+            <li>本部側の免責事由として整理しつつ、加盟店への合理的な対応義務（代替品の提供努力等）も規定</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（6）連帯責任</h3>
+          <ul>
+            <li>トラブル時の連帯責任については<strong>都度協議</strong>とする</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. マスターFC契約書の修正 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="num">2</span>
+        マスターフランチャイズ契約書の修正事項
+      </div>
+      <div class="section-body">
+
+        <div class="sub">
+          <h3><span class="clause-ref">第2条</span> 権利金・支払い条件</h3>
+          <ul>
+            <li><strong>権利金2,500万円は撤廃</strong>（なし）</li>
+            <li>支払い期限は<strong>自動1年更新</strong></li>
+            <li>上納金等の方向 → <strong>予約管理システム</strong>を構築して対応</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3><span class="clause-ref">第3条</span> 発送業務・仕入れ</h3>
+          <ul>
+            <li>発送業務は<strong>MEGAMIから</strong>行う</li>
+            <li>オゾン → <strong>MEGAMIに発注書</strong>を提出</li>
+            <li>支払いは<strong>前払い</strong></li>
+            <li><strong>10営業日以内</strong>に発送</li>
+            <li><strong>商材ごとの最低ロット数</strong>を設定</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3><span class="clause-ref">第8条</span> 最低価格・研修</h3>
+          <ul>
+            <li>最低価格について<span class="highlight">規制を強化</span></li>
+            <li>研修は<strong>最低年1〜2回</strong>を義務化</li>
+          </ul>
+          <div class="alert alert-yellow">
+            <span class="alert-icon">&#9888;</span>
+            <span>大量購入を促し、最低価格を割って提供をしようとするフランチャイジーが発生する可能性が高い。この点の規制を特に強くしたい。</span>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3><span class="clause-ref">第9条</span> 制限事項</h3>
+          <ul>
+            <li><strong>全て制限なし</strong>とする</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. 覚書 -->
+    <section class="section">
+      <div class="section-title">
+        <span class="num">3</span>
+        別途覚書の作成（運用ルール集）
+      </div>
+      <div class="section-body">
+        <p style="margin-bottom:1rem;">契約書本体とは別に、<strong>覚書（運用ルール集）</strong>として以下の事項を整備したいと考えています。</p>
+
+        <div class="sub">
+          <h3>（1）仕入れルール</h3>
+          <ul>
+            <li>商品はMEGAMI合同会社から各FC店舗へ<strong>直送</strong></li>
+            <li><strong>最低発注ロット</strong>を商材ごとに設定（例：最低10箱単位）</li>
+            <li>発注頻度・支払条件（前払い / 10営業日以内に発送）についても規定</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（2）教育・研修</h3>
+          <ul>
+            <li>FC加盟時に<strong>初期研修</strong>を義務付け（技術研修 + 接客研修） ※期間と金額は未定</li>
+            <li>年1〜2回の<strong>バージョンアップ研修</strong>への参加義務</li>
+            <li>研修未受講の場合の措置</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（3）スーパーバイザー（SV）派遣</h3>
+          <ul>
+            <li>開業後、本部からSVを<strong>1ヶ月間</strong>派遣 ※制度を設けるか検討中</li>
+            <li>SV費用：<strong>月額約80万円</strong>（加盟店負担）</li>
+            <li>SVの役割・権限の範囲を規定</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（4）透明性の確保（売上管理・報告義務）</h3>
+          <ul>
+            <li>本部指定の<strong>予約管理システム</strong>の導入を義務化</li>
+            <li>売上データの本部への<strong>リアルタイム報告義務</strong></li>
+            <li>過少申告等の不正が発覚した場合の措置</li>
+          </ul>
+        </div>
+
+        <div class="sub">
+          <h3>（5）ロイヤリティ</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>方式</th><th>概要</th><th>状況</th></tr></thead>
+              <tbody>
+                <tr><td>売上歩合制</td><td>売上に対するパーセンテージ</td><td rowspan="2"><span class="badge badge-yellow">検討中</span></td></tr>
+                <tr><td>定額制</td><td>月額固定料金</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert alert-blue">
+            <span class="alert-icon">&#9432;</span>
+            <span>両方式のメリット・デメリットについて、<strong>法的観点からのアドバイス</strong>をいただけますと幸いです。</span>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>（6）営業代行（販売代理店のインセンティブ）</h3>
+          <ul>
+            <li>代理店へのインセンティブは<span class="highlight">「成約時の成功報酬（%）」のみ</span></li>
+            <li>権利金は課さない</li>
+            <li>この形態に適した<strong>契約形式（業務委託契約等）のご提案</strong>をお願いします</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. スケジュール -->
+    <section class="section">
+      <div class="section-title">
+        <span class="num">4</span>
+        スケジュール
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>時期</th><th>予定</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-red">3月中</span></td>
+                <td><strong>契約書ドラフトおよび覚書の初稿</strong>をいただきたい</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-blue">4月頃</span></td>
+                <td>韓国本社を訪問し、FC関連資料を提示予定</td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-green">6月末〜7月</span></td>
+                <td>韓国パーティー参加・本格的なFC展開開始</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 修正一覧サマリー -->
+    <section class="section">
+      <div class="section-title" style="background:var(--accent);">
+        <span class="num">&#10003;</span>
+        修正依頼サマリー（一覧）
+      </div>
+      <div class="section-body">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="width:120px;">対象契約</th><th style="width:90px;">条項</th><th>修正内容</th><th style="width:80px;">重要度</th></tr></thead>
+            <tbody>
+              <tr>
+                <td rowspan="6"><span class="badge badge-green">FC契約</span></td>
+                <td>新規追加</td>
+                <td>同業種加盟の禁止・競業避止条項</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>第4条2項</td>
+                <td>加盟金に内外装費を含まないことを明記</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>第8条</td>
+                <td>広告宣伝費も加盟金に含まないことを明記</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>新規追加</td>
+                <td>ブランド表記制限（「正規公認FC」のみ許可）</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>新規追加</td>
+                <td>価格維持義務（定価5.5万円固定、値下げ禁止）</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>新規追加</td>
+                <td>供給途絶時の免責・対応条項</td>
+                <td><span class="badge badge-yellow">重要</span></td>
+              </tr>
+              <tr>
+                <td rowspan="4"><span class="badge badge-blue">マスターFC</span></td>
+                <td>第2条</td>
+                <td>権利金2,500万円の撤廃 / 自動1年更新 / 予約管理システムで対応</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>第3条</td>
+                <td>発送業務はMEGAMI / 前払い / 10営業日以内 / 最低ロット設定</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>第8条</td>
+                <td>最低価格規制の強化 / 研修年1〜2回義務化</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+              <tr>
+                <td>第9条</td>
+                <td>制限事項を全て撤廃</td>
+                <td><span class="badge badge-yellow">重要</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-yellow">覚書（新規）</span></td>
+                <td>-</td>
+                <td>仕入れ / 研修 / SV / 売上管理 / ロイヤリティ / 営業代行</td>
+                <td><span class="badge badge-red">最重要</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 締め -->
+    <div class="greeting">
+      <p>ご不明な点がございましたら、お気軽にお問い合わせください。</p>
+      <p>MTGの詳細な議事録もございますので、必要であればお送りいたします。</p>
+      <br>
+      <p>何卒よろしくお願いいたします。</p>
+      <br>
+      <p><strong>MEGAMI合同会社</strong></p>
+      <p>〇〇</p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    MEGAMI合同会社 / CURAIM-FC &mdash; 弁護士への契約書修正依頼 2026年3月7日
+  </footer>
+
+</body>
+</html>
