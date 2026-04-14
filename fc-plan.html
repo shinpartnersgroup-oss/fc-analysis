@@ -185,8 +185,63 @@
     }
     @media print {
       .tab-nav { display: none; }
-      .tab-content { display: block !important; page-break-before: always; }
-      .section { break-inside: avoid; }
+      .tab-content { display: block !important; }
+      .tab-content + .tab-content { page-break-before: always; }
+
+      /* 全体を詰める */
+      body { font-size: 12px; line-height: 1.5; }
+      .header { padding: 1rem 1.5rem 0.8rem; }
+      .header h1 { font-size: 1.3rem; margin-bottom: 0.1rem; }
+      .header p { font-size: 0.8rem; }
+      .main { margin: 0.3rem auto; padding: 0 0.8rem 0.5rem; }
+      .section { margin-bottom: 0.5rem; }
+      .section-title { padding: 0.5rem 1rem; font-size: 0.9rem; }
+      .section-body { padding: 0.6rem 1rem; }
+
+      /* stat/scenario を小さく */
+      .stat-grid { gap: 0.3rem; margin: 0.3rem 0; }
+      .stat-box { padding: 0.3rem; }
+      .stat-label { font-size: 0.65rem; }
+      .stat-value { font-size: 1rem; }
+      .stat-unit { font-size: 0.7rem; }
+      .scenario-grid { gap: 0.3rem; margin-bottom: 0.3rem !important; grid-template-columns: repeat(3,1fr); }
+      .scenario-card { padding: 0.3rem 0.4rem; border-width: 1.5px; }
+      .scenario-label { font-size: 0.65rem; margin-bottom: 0; }
+      .scenario-value { font-size: 1.1rem; }
+      .scenario-desc { font-size: 0.65rem; margin-top: 0; }
+
+      /* テーブルを小さく */
+      table { font-size: 0.78rem; }
+      thead th { padding: 0.3rem 0.5rem; font-size: 0.75rem; }
+      tbody td { padding: 0.25rem 0.5rem; }
+      .table-wrap { margin: 0.3rem 0; }
+      .note { margin: 0.3rem 0; padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+
+      /* バーチャート */
+      .bar-row { margin-bottom: 0.2rem; }
+      .bar-track { height: 18px; }
+      .bar-label { font-size: 0.72rem; width: 90px; }
+      .bar-fill { font-size: 0.65rem; }
+
+      /* 比較 */
+      .compare-grid { gap: 0.5rem; }
+      .compare-header { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+      .compare-body { padding: 0.6rem 0.8rem; }
+      .compare-body li { font-size: 0.8rem; padding: 0.2rem 0 0.2rem 1.2rem; }
+
+      .footer { padding: 0.5rem; font-size: 0.7rem; }
+
+      /* 改ページ制御 */
+      .scenario-grid { break-inside: avoid; }
+      tr { break-inside: avoid; }
+      .compare-grid { break-inside: avoid; }
+
+      /* セクションタイトル・h3の直後で改ページしない */
+      .section-title { break-after: avoid; }
+      h3 { break-after: avoid; margin-top: 0.8rem !important; margin-bottom: 0.3rem !important; }
+
+      /* 投資回収シミュレーション セクション全体を1ページに */
+      .section:last-child { break-inside: avoid; }
     }
   </style>
 </head>
@@ -268,17 +323,17 @@
           <div class="scenario-grid" style="margin-bottom:1.5rem;">
             <div class="scenario-card max">
               <div class="scenario-label">MAX</div>
-              <div class="scenario-value">391<span style="font-size:1rem;">万円</span></div>
+              <div class="scenario-value">349<span style="font-size:1rem;">万円</span></div>
               <div class="scenario-desc">月間売上</div>
             </div>
             <div class="scenario-card normal">
               <div class="scenario-label">NORMAL</div>
-              <div class="scenario-value">261<span style="font-size:1rem;">万円</span></div>
+              <div class="scenario-value">253<span style="font-size:1rem;">万円</span></div>
               <div class="scenario-desc">月間売上</div>
             </div>
             <div class="scenario-card negative">
               <div class="scenario-label">NEGATIVE</div>
-              <div class="scenario-value">124<span style="font-size:1rem;">万円</span></div>
+              <div class="scenario-value">149<span style="font-size:1rem;">万円</span></div>
               <div class="scenario-desc">月間売上</div>
             </div>
           </div>
@@ -295,20 +350,20 @@
               </thead>
               <tbody>
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">施術人数（育毛）</td></tr>
-                <tr><td>1日あたり施術数</td><td class="text-right">4名（稼働率100%）</td><td class="text-right">3名（稼働率75%）</td><td class="text-right">1.5名（稼働率38%）</td></tr>
-                <tr><td>月間施術数（25日）</td><td class="text-right">100名</td><td class="text-right">75名</td><td class="text-right">38名</td></tr>
-                <tr><td>うち初回モニター（30%）</td><td class="text-right">30名</td><td class="text-right">23名</td><td class="text-right">11名</td></tr>
-                <tr><td>うちリピーター（70%）</td><td class="text-right">70名</td><td class="text-right">52名</td><td class="text-right">27名</td></tr>
+                <tr><td>1日あたり施術数</td><td class="text-right">3名（稼働率75%）</td><td class="text-right">2.2名（稼働率55%）</td><td class="text-right">1.3名（稼働率33%）</td></tr>
+                <tr><td>月間施術数（25日）</td><td class="text-right">75名</td><td class="text-right">54名</td><td class="text-right">32名</td></tr>
+                <tr><td>うち初回モニター（30%）</td><td class="text-right">23名</td><td class="text-right">16名</td><td class="text-right">10名</td></tr>
+                <tr><td>うちリピーター（70%）</td><td class="text-right">52名</td><td class="text-right">38名</td><td class="text-right">22名</td></tr>
 
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">売上</td></tr>
-                <tr><td>育毛リピーター売上</td><td class="text-right">3,850,000円</td><td class="text-right">2,860,000円</td><td class="text-right">1,485,000円</td></tr>
-                <tr><td>初回モニター売上</td><td class="text-right">825,000円</td><td class="text-right">632,500円</td><td class="text-right">302,500円</td></tr>
+                <tr><td>育毛リピーター売上</td><td class="text-right">2,860,000円</td><td class="text-right">2,090,000円</td><td class="text-right">1,210,000円</td></tr>
+                <tr><td>初回モニター売上</td><td class="text-right">632,500円</td><td class="text-right">440,000円</td><td class="text-right">275,000円</td></tr>
                 <tr><td>フィジオショット等</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
-                <tr class="highlight-row"><td><strong>月間売上合計（A）</strong></td><td class="text-right text-blue">3,910,000円</td><td class="text-right text-green">2,607,500円</td><td class="text-right text-red">1,237,500円</td></tr>
+                <tr class="highlight-row"><td><strong>月間売上合計（A）</strong></td><td class="text-right text-blue">3,492,500円</td><td class="text-right text-green">2,530,000円</td><td class="text-right text-red">1,485,000円</td></tr>
 
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">変動費（商材原価）</td></tr>
-                <tr><td>商材原価（@7,355円×人数）</td><td class="text-right">735,500円</td><td class="text-right">551,625円</td><td class="text-right">279,490円</td></tr>
-                <tr class="highlight-row"><td><strong>粗利益（B = A - 変動費）</strong></td><td class="text-right text-blue">3,174,500円</td><td class="text-right text-green">2,055,875円</td><td class="text-right text-red">958,010円</td></tr>
+                <tr><td>商材原価（@7,355円×人数）</td><td class="text-right">551,625円</td><td class="text-right">397,170円</td><td class="text-right">235,360円</td></tr>
+                <tr class="highlight-row"><td><strong>粗利益（B = A - 変動費）</strong></td><td class="text-right text-blue">2,940,875円</td><td class="text-right text-green">2,132,830円</td><td class="text-right text-red">1,249,640円</td></tr>
 
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">固定費（月額）</td></tr>
                 <tr><td>家賃</td><td class="text-right">250,000円</td><td class="text-right">250,000円</td><td class="text-right">200,000円</td></tr>
@@ -320,9 +375,9 @@
                 <tr><td>ロイヤリティ（検討中）</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
                 <tr class="highlight-row"><td><strong>固定費合計（C）</strong></td><td class="text-right">660,000円</td><td class="text-right">660,000円</td><td class="text-right">505,000円</td></tr>
 
-                <tr class="total-row"><td><strong>営業利益（B - C）</strong></td><td class="text-right">2,514,500円</td><td class="text-right">1,395,875円</td><td class="text-right">453,010円</td></tr>
-                <tr class="highlight-row"><td><strong>営業利益率</strong></td><td class="text-right text-blue">64.3%</td><td class="text-right text-green">53.5%</td><td class="text-right text-red">36.6%</td></tr>
-                <tr class="highlight-row"><td><strong>年間営業利益</strong></td><td class="text-right text-blue">30,174,000円</td><td class="text-right text-green">16,750,500円</td><td class="text-right text-red">5,436,120円</td></tr>
+                <tr class="total-row"><td><strong>営業利益（B - C）</strong></td><td class="text-right">2,280,875円</td><td class="text-right">1,472,830円</td><td class="text-right">744,640円</td></tr>
+                <tr class="highlight-row"><td><strong>営業利益率</strong></td><td class="text-right text-blue">65.3%</td><td class="text-right text-green">58.2%</td><td class="text-right text-red">50.1%</td></tr>
+                <tr class="highlight-row"><td><strong>年間営業利益</strong></td><td class="text-right text-blue">27,370,500円</td><td class="text-right text-green">17,673,960円</td><td class="text-right text-red">8,935,680円</td></tr>
               </tbody>
             </table>
           </div>
@@ -339,17 +394,17 @@
           <div class="scenario-grid" style="margin-bottom:1.5rem;">
             <div class="scenario-card max">
               <div class="scenario-label">MAX</div>
-              <div class="scenario-value">716<span style="font-size:1rem;">万円</span></div>
+              <div class="scenario-value">701<span style="font-size:1rem;">万円</span></div>
               <div class="scenario-desc">月間売上</div>
             </div>
             <div class="scenario-card normal">
               <div class="scenario-label">NORMAL</div>
-              <div class="scenario-value">456<span style="font-size:1rem;">万円</span></div>
+              <div class="scenario-value">506<span style="font-size:1rem;">万円</span></div>
               <div class="scenario-desc">月間売上</div>
             </div>
             <div class="scenario-card negative">
               <div class="scenario-label">NEGATIVE</div>
-              <div class="scenario-value">209<span style="font-size:1rem;">万円</span></div>
+              <div class="scenario-value">300<span style="font-size:1rem;">万円</span></div>
               <div class="scenario-desc">月間売上</div>
             </div>
           </div>
@@ -366,19 +421,19 @@
               </thead>
               <tbody>
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">施術人数（育毛）</td></tr>
-                <tr><td>1日あたり施術数</td><td class="text-right">7名（稼働率88%）</td><td class="text-right">5名（稼働率63%）</td><td class="text-right">2.5名（稼働率31%）</td></tr>
-                <tr><td>月間施術数（25日）</td><td class="text-right">175名</td><td class="text-right">125名</td><td class="text-right">63名</td></tr>
-                <tr><td>うち初回モニター（30%）</td><td class="text-right">53名</td><td class="text-right">38名</td><td class="text-right">19名</td></tr>
-                <tr><td>うちリピーター（70%）</td><td class="text-right">122名</td><td class="text-right">87名</td><td class="text-right">44名</td></tr>
+                <tr><td>1日あたり施術数</td><td class="text-right">6名（稼働率75%）</td><td class="text-right">4.3名（稼働率54%）</td><td class="text-right">2.5名（稼働率31%）</td></tr>
+                <tr><td>月間施術数（25日）</td><td class="text-right">150名</td><td class="text-right">108名</td><td class="text-right">64名</td></tr>
+                <tr><td>うち初回モニター（30%）</td><td class="text-right">45名</td><td class="text-right">32名</td><td class="text-right">19名</td></tr>
+                <tr><td>うちリピーター（70%）</td><td class="text-right">105名</td><td class="text-right">76名</td><td class="text-right">45名</td></tr>
 
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">売上</td></tr>
-                <tr><td>育毛リピーター売上</td><td class="text-right">6,710,000円</td><td class="text-right">4,785,000円</td><td class="text-right">2,420,000円</td></tr>
-                <tr><td>初回モニター売上</td><td class="text-right">1,457,500円</td><td class="text-right">1,045,000円</td><td class="text-right">522,500円</td></tr>
-                <tr class="highlight-row"><td><strong>月間売上合計（A）</strong></td><td class="text-right text-blue">7,162,500円</td><td class="text-right text-green">4,562,500円</td><td class="text-right text-red">2,090,000円</td></tr>
+                <tr><td>育毛リピーター売上</td><td class="text-right">5,775,000円</td><td class="text-right">4,180,000円</td><td class="text-right">2,475,000円</td></tr>
+                <tr><td>初回モニター売上</td><td class="text-right">1,237,500円</td><td class="text-right">880,000円</td><td class="text-right">522,500円</td></tr>
+                <tr class="highlight-row"><td><strong>月間売上合計（A）</strong></td><td class="text-right text-blue">7,012,500円</td><td class="text-right text-green">5,060,000円</td><td class="text-right text-red">2,997,500円</td></tr>
 
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">変動費（商材原価）</td></tr>
-                <tr><td>商材原価（@7,355円×人数）</td><td class="text-right">1,287,125円</td><td class="text-right">919,375円</td><td class="text-right">463,365円</td></tr>
-                <tr class="highlight-row"><td><strong>粗利益（B）</strong></td><td class="text-right text-blue">5,875,375円</td><td class="text-right text-green">3,643,125円</td><td class="text-right text-red">1,626,635円</td></tr>
+                <tr><td>商材原価（@7,355円×人数）</td><td class="text-right">1,103,250円</td><td class="text-right">794,340円</td><td class="text-right">470,720円</td></tr>
+                <tr class="highlight-row"><td><strong>粗利益（B）</strong></td><td class="text-right text-blue">5,909,250円</td><td class="text-right text-green">4,265,660円</td><td class="text-right text-red">2,526,780円</td></tr>
 
                 <tr><td colspan="4" style="background:#f0f4f8; font-weight:700; font-size:0.8rem;">固定費（月額）</td></tr>
                 <tr><td>家賃</td><td class="text-right">300,000円</td><td class="text-right">300,000円</td><td class="text-right">250,000円</td></tr>
@@ -389,9 +444,9 @@
                 <tr><td>予約管理システム</td><td class="text-right">10,000円</td><td class="text-right">10,000円</td><td class="text-right">10,000円</td></tr>
                 <tr class="highlight-row"><td><strong>固定費合計（C）</strong></td><td class="text-right">1,020,000円</td><td class="text-right">1,020,000円</td><td class="text-right">790,000円</td></tr>
 
-                <tr class="total-row"><td><strong>営業利益（B - C）</strong></td><td class="text-right">4,855,375円</td><td class="text-right">2,623,125円</td><td class="text-right">836,635円</td></tr>
-                <tr class="highlight-row"><td><strong>営業利益率</strong></td><td class="text-right text-blue">67.8%</td><td class="text-right text-green">57.5%</td><td class="text-right text-red">40.0%</td></tr>
-                <tr class="highlight-row"><td><strong>年間営業利益</strong></td><td class="text-right text-blue">58,264,500円</td><td class="text-right text-green">31,477,500円</td><td class="text-right text-red">10,039,620円</td></tr>
+                <tr class="total-row"><td><strong>営業利益（B - C）</strong></td><td class="text-right">4,889,250円</td><td class="text-right">3,245,660円</td><td class="text-right">1,736,780円</td></tr>
+                <tr class="highlight-row"><td><strong>営業利益率</strong></td><td class="text-right text-blue">69.7%</td><td class="text-right text-green">64.1%</td><td class="text-right text-red">57.9%</td></tr>
+                <tr class="highlight-row"><td><strong>年間営業利益</strong></td><td class="text-right text-blue">58,671,000円</td><td class="text-right text-green">38,947,920円</td><td class="text-right text-red">20,841,360円</td></tr>
               </tbody>
             </table>
           </div>
@@ -411,18 +466,18 @@
               <tbody>
                 <tr>
                   <td><span class="badge badge-blue">MAX</span> 投資回収期間</td>
-                  <td class="text-center text-bold text-blue">約3.7ヶ月</td>
+                  <td class="text-center text-bold text-blue">約4.1ヶ月</td>
                   <td class="text-center text-bold text-blue">約2.4ヶ月</td>
                 </tr>
                 <tr>
                   <td><span class="badge badge-green">NORMAL</span> 投資回収期間</td>
-                  <td class="text-center text-bold text-green">約6.7ヶ月</td>
-                  <td class="text-center text-bold text-green">約4.4ヶ月</td>
+                  <td class="text-center text-bold text-green">約6.3ヶ月</td>
+                  <td class="text-center text-bold text-green">約3.6ヶ月</td>
                 </tr>
                 <tr>
                   <td><span class="badge badge-red">NEGATIVE</span> 投資回収期間</td>
-                  <td class="text-center text-bold text-red">約20.5ヶ月</td>
-                  <td class="text-center text-bold text-red">約13.9ヶ月</td>
+                  <td class="text-center text-bold text-red">約12.5ヶ月</td>
+                  <td class="text-center text-bold text-red">約6.7ヶ月</td>
                 </tr>
               </tbody>
             </table>
@@ -432,27 +487,27 @@
           <div class="bar-chart">
             <div class="bar-row">
               <div class="bar-label">1台 MAX</div>
-              <div class="bar-track"><div class="bar-fill blue" style="width:64.3%;">64.3%</div></div>
+              <div class="bar-track"><div class="bar-fill blue" style="width:65.3%;">65.3%</div></div>
             </div>
             <div class="bar-row">
               <div class="bar-label">1台 NORMAL</div>
-              <div class="bar-track"><div class="bar-fill green" style="width:53.5%;">53.5%</div></div>
+              <div class="bar-track"><div class="bar-fill green" style="width:58.2%;">58.2%</div></div>
             </div>
             <div class="bar-row">
               <div class="bar-label">1台 NEGATIVE</div>
-              <div class="bar-track"><div class="bar-fill red" style="width:36.6%;">36.6%</div></div>
+              <div class="bar-track"><div class="bar-fill red" style="width:50.1%;">50.1%</div></div>
             </div>
             <div class="bar-row">
               <div class="bar-label">2台 MAX</div>
-              <div class="bar-track"><div class="bar-fill blue" style="width:67.8%;">67.8%</div></div>
+              <div class="bar-track"><div class="bar-fill blue" style="width:69.7%;">69.7%</div></div>
             </div>
             <div class="bar-row">
               <div class="bar-label">2台 NORMAL</div>
-              <div class="bar-track"><div class="bar-fill green" style="width:57.5%;">57.5%</div></div>
+              <div class="bar-track"><div class="bar-fill green" style="width:64.1%;">64.1%</div></div>
             </div>
             <div class="bar-row">
               <div class="bar-label">2台 NEGATIVE</div>
-              <div class="bar-track"><div class="bar-fill red" style="width:40.0%;">40.0%</div></div>
+              <div class="bar-track"><div class="bar-fill red" style="width:57.9%;">57.9%</div></div>
             </div>
           </div>
         </div>
